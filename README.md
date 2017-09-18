@@ -7,6 +7,7 @@ Mandalla é um tipo de produção de alimentos que utiliza os princípios univer
 * WebService
 * Aplicativo Hibrido
 * IaaS
+* Virtualização de sensores
 
 ### WebService
 
@@ -30,14 +31,14 @@ cd mandalla_app/app
 ionic serve
 ```
 
-
-
 ### Iaas
 
 Digital Ocean
 
 
+### Virtualização de sensores
 
+Arduino
 
 
 
