@@ -36,9 +36,55 @@ ionic serve
 Digital Ocean
 
 
-### Virtualização de sensores
+# Virtualização de sensores
 
-Arduino
+## Arduino
+
+```
+{
+	"id": "0019B9FBE258",
+	"nade": "Arduino",
+	"version": "0.1",
+	"sensors": [
+		{
+			"id": "0019B9FBE25801",
+			"version": "0.1",
+			"sensors": [
+				{
+					"id": "01",
+					"name": "nivel-tanque",
+					"type": "nivel",
+					"value": "7.5"
+				}
+			]
+		},
+		{
+			"id": "0019B9FBE25802",
+			"version": "0.1",
+			"sensors": [
+				{
+					"id": "02",
+					"name": "ph-tanque",
+					"type": "ph",
+					"value": "4.5"
+				}
+			]
+		},
+		{
+			"id": "0019B9FBE25803",
+			"version": "0.1",
+			"sensors": [
+				{
+					"id": "03",
+					"name": "umidade-solo-A1",
+					"type": "umidade",
+					"value": "78"
+				}
+			]
+		}
+	]
+}
+```
 
 
 
