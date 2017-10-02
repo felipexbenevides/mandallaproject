@@ -40,6 +40,8 @@ Digital Ocean
 
 ## Arduino
 
+O arduino funciona como um serviço online que disponibiliza a leitura dos sensores utilizados
+
 ```
 {
 	"id": "0019B9FBE258",
