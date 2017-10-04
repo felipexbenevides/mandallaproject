@@ -103,27 +103,27 @@ APIS
 * EXEMPLO: { 'id' : xxx, 'name' : 'MILHO', 'id': yyy, 'name' : 'FEIJAO' }
 
 ## URL: '/planting/crop/:id/companion'
-RECEBE: id da cultura
-RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS COMPANHEIRAS PARA UMA CULTURA
-EXEMPLO: { 'id' : xxx, 'companion':'Cenoura,Espinafre,Tomate,Repolho,Salsa' }
+* RECEBE: id da cultura
+* RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS COMPANHEIRAS PARA UMA CULTURA
+* EXEMPLO: { 'id' : xxx, 'companion':'Cenoura,Espinafre,Tomate,Repolho,Salsa' }
 
 ## URL: '/planting/crop/:id/enemy'
-RECEBE: id da cultura
-RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS INIMIGAS PARA UMA CULTURA
-EXEMPLO: { 'id' : xxx, 'enemy':'Cenoura,Espinafre,Tomate,Repolho,Salsa' }
+* RECEBE: id da cultura
+* RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS INIMIGAS PARA UMA CULTURA
+* EXEMPLO: { 'id' : xxx, 'enemy':'Cenoura,Espinafre,Tomate,Repolho,Salsa' }
 
 ## URL: '/planting/crop/:id/intercropping'
-RECEBE: id da cultura
-RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS EM CONSORCIO PARA UMA CULTURA
-EXEMPLO: { 'id' : xxx, 'intercropping':'Salsa,Tomate,Milho,Cenoura' }
+* RECEBE: id da cultura
+* RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS EM CONSORCIO PARA UMA CULTURA
+* EXEMPLO: { 'id' : xxx, 'intercropping':'Salsa,Tomate,Milho,Cenoura' }
 
 ## NAO IMPLEMENTADO CRIAR NOVO PLANTIO
-URL:/planting/'
-POST
+* URL:/planting/'
+* POST
 
 ## NAO IMPLEMENTADO DADOS INMET
- URL:'/planting/crop/climatic'
+* URL:'/planting/crop/climatic'
 
 # NAO IMPLEMENTADO: COLHEITAS A OCORRER
- URL: '/harvest/'
+* URL: '/harvest/'
 
