@@ -1,13 +1,28 @@
-<ion-header>
-  <ion-navbar>
+ <ion-header>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title >API</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="itemTapped(item.title, $event, item)">
+      <ion-avatar item-start>
+        <ion-icon name="{{ item.icon }}" style="font-size:48px;"></ion-icon>
+      </ion-avatar>
+      <h2> {{item.title}}</h2>
+      <p>{{item.note}}</p>
+    </ion-item>   
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>
+
+<!-- <ion-content>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-left></ion-icon>
@@ -20,4 +35,4 @@
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
-</ion-content>
+</ion-content> -->

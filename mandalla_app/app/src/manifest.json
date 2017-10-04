@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Mandalla IoT",
+  "short_name": "MandallaIoT",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

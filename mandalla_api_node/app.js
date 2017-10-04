@@ -1,24 +1,169 @@
 var express = require('express');
-var http  = require('http');
-var bodyParser = require('body-parser');
 var app = express();
+
+var http = require('http');
+var bodyParser = require('body-parser');
+
 var mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
-app.use(bodyParser.json()); 
+
+var serverParam = { mode: 'debug', port: '80', sign: 'mandallaProjectServer' };
+
+app.listen(80, function () {
+  status('ON');
+});
 
 
-http.get('http://192.168.2.110:8080/inventory/iis/json/', (result)=>{
-  const { statusCode } = result;
-  var data;
-  console.log(statusCode);
-  result.setEncoding('utf8');
-  result.on('data', (result)=>{
-    data += result; 
-    // console.log(data);
-  })
-  console.log(data);
-  
-})
+/**
+ * UTIL
+ */
+
+function find(collection, filter, fields) {
+  return new Promise((resolve, reject) => {
+    MongoClient.connect('mongodb://localhost:27017/mandalla', (err, db) => {
+      if (err) return console.log(err);
+      return db.collection(collection).find(filter, fields).toArray(function (err, docs) {
+        db.close();
+        resolve(docs);
+      });
+    });
+  });
+}
+
+/**
+ * Middleware
+ */
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  var d = new Date();
+  console.warn('Request Time:', d.toUTCString());
+  console.log('Request Type:', req.method);
+  console.log('Request URL:', req.originalUrl);
+  next();
+});
+
+app.use(bodyParser.json());
+
+/**
+ * TESTES
+ */
+app.get('/', (req, res) => {
+  res.send('Hello World - Mandalla IoT');
+});
+/*
+ _____  _               _   _ _______ _____ _   _  _____ 
+|  __ \| |        /\   | \ | |__   __|_   _| \ | |/ ____|
+| |__) | |       /  \  |  \| |  | |    | | |  \| | |  __ 
+|  ___/| |      / /\ \ | . ` |  | |    | | | . ` | | |_ |
+| |    | |____ / ____ \| |\  |  | |   _| |_| |\  | |__| |
+|_|    |______/_/    \_\_| \_|  |_|  |_____|_| \_|\_____|
+                                                         
+*/
+
+/**
+ * CROP LIST
+ */
+app.get('/planting/crop/', (req, res) => {
+  find('crop', {}, { "name": 1 }).then((result) => {
+    res.send(result);
+  });
+});
+
+/**
+ * CROP ID
+ */
+app.get('/planting/crop/:crop', (req, res) => {
+  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {}).then((result) => {
+    res.send(result);
+  });
+});
+
+/**
+ * CROP COMPANION
+ */
+app.get('/planting/crop/:crop/companion', (req, res) => {
+  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, { "companion": 1 }).then((result) => {
+
+    res.send(result);
+  });
+  // res.send('informacoes: ' + req.params.crop);
+});
+
+/**
+ * CROP ENEMY
+ */
+app.get('/planting/crop/:crop/enemy', (req, res) => {
+  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, { "enemy": 1 }).then((result) => {
+
+    res.send(result);
+  });
+});
+
+
+/**
+ * CROP INTERCROPPING
+ */
+app.get('/planting/crop/:crop/intercropping', (req, res) => {
+  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, { "intercropping": 1 }).then((result) => {
+    res.send(result);
+  });
+});
+
+/**
+ * CROP PLANTING
+ */
+app.post('/planting/', (req, res) => {
+  console.log(req.body);
+  res.json(req.body);
+
+});
+
+/**
+ * CROP CLIMATIC
+ */
+app.get('/planting/crop/climatic', (req, res) => {
+});
+
+
+/**
+ _    _          _______      ________  _____ _______ 
+ | |  | |   /\   |  __ \ \    / /  ____|/ ____|__   __|
+ | |__| |  /  \  | |__) \ \  / /| |__  | (___    | |   
+ |  __  | / /\ \ |  _  / \ \/ / |  __|  \___ \   | |   
+ | |  | |/ ____ \| | \ \  \  /  | |____ ____) |  | |   
+ |_|  |_/_/    \_\_|  \_\  \/   |______|_____/   |_|   
+                                                       
+ */
+
+/**
+ * Harvest
+ */
+app.get('/harvest/', (req, res) => {
+});
+
+
+/**
+ * INIT DB
+ */
+app.get('/db/init/', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.send('init');
+  init();
+});
+
+
+
+
+function status(status) {
+  console.group("Server Info:");
+  console.log('Port: ' + serverParam.port);
+  console.log('Mode: ' + serverParam.mode);
+  console.group("Status:");
+  console.log(serverParam.sign + ': ' + status);
+  console.groupEnd();
+  console.groupEnd();
+}
+
 
 function init() {
   MongoClient.connect('mongodb://localhost:27017/mandalla', (err, db) => {
@@ -50,136 +195,3 @@ function init() {
 
   });
 }
-
-function find(collection, filter, fields) {
-  return new Promise((resolve, reject) => {
-    MongoClient.connect('mongodb://localhost:27017/mandalla', (err, db) => {
-      if (err) return console.log(err);
-      // db.collection('test').insertOne({ 'db': 'mongo' });
-
-      return db.collection(collection).find(filter, fields).toArray(function (err, docs) {
-        // console.log(docs);
-        db.close();
-        resolve(docs);
-      });
-      // db.collection('crop').find().toArray(function (err, docs) { console.log(docs); });
-      // console.log(db);
-    });
-  });
-}
-
-
-app.listen(80, function () {
-  console.log('Example app listening on port 80!');
-});
-
-/**
- * TESTE
- */
-app.get('/', (req, res) => {
-  // mongo.db.collection('test').find({'db':'mongo'}).toArray(function(err, docs){console.log(docs);}); 
-  res.send('Hello World');
-});
-/*
- _____  _               _   _ _______ _____ _   _  _____ 
-|  __ \| |        /\   | \ | |__   __|_   _| \ | |/ ____|
-| |__) | |       /  \  |  \| |  | |    | | |  \| | |  __ 
-|  ___/| |      / /\ \ | . ` |  | |    | | | . ` | | |_ |
-| |    | |____ / ____ \| |\  |  | |   _| |_| |\  | |__| |
-|_|    |______/_/    \_\_| \_|  |_|  |_____|_| \_|\_____|
-                                                         
-*/
-
-/**
- * CROP ID
- */
-app.get('/planting/crop/:crop', (req, res) => {
-  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {}).then((result) => {
-    res.send(result);
-  });
-  // res.send('informacoes: ' + req.params.crop);
-});
-
-/**
- * CROP LIST
- */
-app.get('/planting/crop/', (req, res) => {
-  find('crop', {}, { "name": 1 }).then((result) => {
-    res.send(result);
-  });
-});
-
-/**
- * CROP COMPANION
- */
-app.get('/planting/crop/:id/companion', (req, res) => {
-  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {"companion":1}).then((result) => {
-    res.send(result);
-  });
-});
-
-/**
- * CROP ENEMY
- */
-app.get('/planting/crop/:id/enemy', (req, res) => {
-  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {"enemy":1}).then((result) => {
-    res.send(result);
-  });
-});
-
-/**
- * CROP INTERCROPPING
- */
-app.get('/planting/crop/:id/intercropping', (req, res) => {
-  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {"intercropping":1}).then((result) => {
-    res.send(result);
-  });
-});
-
-/**
- * CROP PLANTING
- */
-app.post('/planting/', (req, res) => {
-  console.log(req.body);
-  res.json(req.body);
-
-});
-
-/**
- * CROP CLIMATIC
- */
-app.get('/planting/crop/climatic', (req, res) => {
-
-});
-
-
-/**
- _    _          _______      ________  _____ _______ 
- | |  | |   /\   |  __ \ \    / /  ____|/ ____|__   __|
- | |__| |  /  \  | |__) \ \  / /| |__  | (___    | |   
- |  __  | / /\ \ |  _  / \ \/ / |  __|  \___ \   | |   
- | |  | |/ ____ \| | \ \  \  /  | |____ ____) |  | |   
- |_|  |_/_/    \_\_|  \_\  \/   |______|_____/   |_|   
-                                                       
- */
-
-/**
- * Harvest
- */
-app.get('/harvest/', (req, res) => {
-
-});
-
-
-/**
-   _   _   _  
-  (_) (_) (_) 
-
- */
-/**
- * INIT DB
- */
-app.get('/db/init/', (req, res) => {
-  res.send('init');
-  init();
-});

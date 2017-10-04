@@ -5,24 +5,43 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { HttpServiceProvider } from '../providers/http-service/http-service';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [HttpServiceProvider]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any, desc: any, icon: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: HttpServiceProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'API', component: ListPage }
+      {
+        title: 'Projeto',
+        component: HomePage,
+        desc: 'página inicial',
+        icon: 'home'
+      },
+      {
+        title: 'API',
+        component: ListPage,
+        desc: 'lista das APIs disponíveis',
+        icon: 'cloud-circle'
+      },
+      {
+        title: 'Configurações',
+        component: HomePage,
+        desc: 'configurações básicas',
+        icon: 'construct'
+      }
+      
     ];
 
   }
