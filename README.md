@@ -45,7 +45,7 @@ O arduino funciona como um serviço online que disponibiliza a leitura dos senso
 ```
 {
 	"id": "0019B9FBE258",
-	"nade": "Arduino",
+	"nOde": "Arduino",
 	"version": "0.1",
 	"sensors": [
 		{
