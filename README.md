@@ -90,6 +90,99 @@ O arduino funciona como um serviço online que disponibiliza a leitura dos senso
 ```
 
 
+APIS de Plantio
 
+app.get('/planting/crop/:crop', (req, res) => {
+  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {}).then((result) => {
+    res.send(result);
+  });
+  // res.send('informacoes: ' + req.params.crop);
+});
+
+RECEBE: ID DA CULTURA 
+RETORNA: DADOS ESPECÍFICOS PARA ESSA CULTURA EM FORMATO JSON
+EXEMPLO: {'number': 1, "name": "Abobrinha", "quantity": 1, "un": 'Kg/m2', "harvest": 1, "intercropping": "Abobrinha,Cenoura,Milho", "companion": "", "enemy": ""}
+
+/**
+ * CROP LIST
+ */
+app.get('/planting/crop/', (req, res) => {
+  find('crop', {}, { "name": 1 }).then((result) => {
+    res.send(result);
+  });
+});
+
+RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
+RETORNA:LISTA EM FORMATO JSON DE INFORMACOES RESUMIDAS DE TODAS AS CULTURAS
+EXEMPLO: { 'id' : xxx, 'name' : 'MILHO', 'id': yyy, 'name' : 'FEIJAO' }
+
+/**
+ * CROP COMPANION
+ */
+app.get('/planting/crop/:id/companion', (req, res) => {
+  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {"companion":1}).then((result) => {
+    res.send(result);
+  });
+});
+
+
+RECEBE: id da cultura
+RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS COMPANHEIRAS PARA UMA CULTURA
+EXEMPLO: { 'id' : xxx, 'companion':'Cenoura,Espinafre,Tomate,Repolho,Salsa' }
+
+
+/**
+ * CROP ENEMY
+ */
+app.get('/planting/crop/:id/enemy', (req, res) => {
+  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {"enemy":1}).then((result) => {
+    res.send(result);
+  });
+});
+
+
+RECEBE: id da cultura
+RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS INIMIGAS PARA UMA CULTURA
+EXEMPLO: { 'id' : xxx, 'enemy':'Cenoura,Espinafre,Tomate,Repolho,Salsa' }
+
+
+/**
+ * CROP INTERCROPPING
+ */
+app.get('/planting/crop/:id/intercropping', (req, res) => {
+  find('crop', { "_id": new mongo.ObjectId(req.params.crop) }, {"intercropping":1}).then((result) => {
+    res.send(result);
+  });
+});
+
+
+RECEBE: id da cultura
+RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS EM CONSORCIO PARA UMA CULTURA
+EXEMPLO: { 'id' : xxx, 'intercropping':'Salsa,Tomate,Milho,Cenoura' }
+
+NAO IMPLEMENTADO CRIAR NOVO PLANTIO
+/**
+ * CROP PLANTING
+ */
+app.post('/planting/', (req, res) => {
+  console.log(req.body);
+  res.json(req.body);
+
+});
+NAO IMPLEMENTADO: DADOS CLIMATICOS INMET
+/**
+ * CROP CLIMATIC
+ */
+app.get('/planting/crop/climatic', (req, res) => {
+
+});
+
+NAO IMPLEMENTADO: COLHEITAS A OCORRER
+/**
+ * Harvest
+ */
+app.get('/harvest/', (req, res) => {
+
+});
 
 
