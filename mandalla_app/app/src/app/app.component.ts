@@ -5,6 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { ConfigPage } from '../pages/config/config';
+import { SensorsPage } from '../pages/sensors/sensors';
+import { PlantingPage } from '../pages/planting/planting';
+import { CirclesPage } from '../pages/circles/circles';
+
+
+
+
 import { HttpServiceProvider } from '../providers/http-service/http-service';
 
 @Component({
@@ -36,8 +44,20 @@ export class MyApp {
         icon: 'cloud-circle'
       },
       {
+        title: 'Sensores',
+        component: SensorsPage,
+        desc: 'lista de sensores',
+        icon: 'pulse'
+      },
+      {
+        title: 'Circulos',
+        component: CirclesPage,
+        desc: 'setores do plantio',
+        icon: 'ionic'
+      },
+      {
         title: 'Configurações',
-        component: HomePage,
+        component: ConfigPage,
         desc: 'configurações básicas',
         icon: 'construct'
       }

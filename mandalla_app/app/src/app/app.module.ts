@@ -5,6 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ConfigPage } from '../pages/config/config';
+import { ChartsPage } from '../pages/charts/charts';
+import { SensorsPage } from '../pages/sensors/sensors';
+import { PlantingPage } from '../pages/planting/planting';
+import { CirclesPage } from '../pages/circles/circles';
+
+
 import { ListPage } from '../pages/list/list';
 import { ResultsPage } from '../pages/results/results';
 import { CompanionPage } from '../pages/companion/companion';
@@ -25,7 +32,12 @@ import { HttpServiceProvider } from '../providers/http-service/http-service';
     ResultsPage,
     CompanionPage,
     EnemyPage,
-    IntercroppingPage
+    IntercroppingPage,
+    ConfigPage,
+    ChartsPage,
+    SensorsPage,
+    PlantingPage,
+    CirclesPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +52,12 @@ import { HttpServiceProvider } from '../providers/http-service/http-service';
     ResultsPage,
     CompanionPage,
     EnemyPage,
-    IntercroppingPage
+    IntercroppingPage,
+    ConfigPage,
+    ChartsPage,
+    SensorsPage,
+    PlantingPage,
+    CirclesPage
   ],
   providers: [
     StatusBar,

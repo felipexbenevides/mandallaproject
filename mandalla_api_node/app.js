@@ -13,6 +13,14 @@ app.listen(80, function () {
   status('ON');
 });
 
+var request = require('request');
+// request('http://192.168.1.177', function (error, response, body) {
+//   console.log('request')
+//   if (!error && response.statusCode == 200) {
+//     console.log(body) // Print the google web page.
+//   }
+// })
+
 
 /**
  * UTIL
@@ -50,6 +58,118 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.send('Hello World - Mandalla IoT');
 });
+
+/**
+ * ARDUINO
+ */
+app.get('/arduino', (req, res) => {
+  res.send('{"id":"977D205F4CDD43E39AE67A90903B48D0","name":"Arduino","version":"0.1","sensors":[{"id":"F752CBA595774EF7B07B68639B3D3506","version":"0.1","sensors":[{"id":"01","name":"nivel_tanque","type":"nivel","value":"271"}]},{"id":"58B3D398114B46D99DBF8A8C9FB8881D","version":"0.1","sensors":[{"id":"02","name":"ph_tanque","type":"ph","value":"303"}]},{"id":"A69C588D122D4892B4837F66C1E96082","version":"0.1","sensors":[{"id":"03","name":"umidade_solo_A1","type":"umidade","value":"337"}]}]}');
+});
+
+/*
+   _____ ______ _   _  _____  ____  _____   _____ 
+  / ____|  ____| \ | |/ ____|/ __ \|  __ \ / ____|
+ | (___ | |__  |  \| | (___ | |  | | |__) | (___  
+  \___ \|  __| | . ` |\___ \| |  | |  _  / \___ \ 
+  ____) | |____| |\  |____) | |__| | | \ \ ____) |
+ |_____/|______|_| \_|_____/ \____/|_|  \_\_____/ 
+*/
+
+/**
+ * SENSORS LIST
+ */
+app.get('/sensors', (req, res) => {
+  request('http://192.168.1.177', (error, response, body) => {
+    console.log('request')
+    if (!error && response.statusCode == 200) {
+      console.log(body)
+      res.send(body);
+    }
+  })
+});
+/*
+*
+*/
+app.get('/sensor/water/level', (req, res) => {
+  request('http://192.168.1.177', (error, response, body) => {
+    console.log('request')
+    if (!error && response.statusCode == 200) {
+      console.log(body)
+      var data = JSON.parse(body);
+      res.send(data.sensors.filter((obj) => {
+        return (obj['sensors'][0]['name'] == "nivel_tanque") ? true : false
+      }));
+    }
+  })
+});
+/*
+*
+*/
+app.get('/sensor/water/ph', (req, res) => {
+  request('http://192.168.1.177', (error, response, body) => {
+    console.log('request')
+    if (!error && response.statusCode == 200) {
+      console.log(body)
+      var data = JSON.parse(body);
+      res.send(data.sensors.filter((obj) => {
+        return (obj['sensors'][0]['name'] == "ph_tanque") ? true : false
+      }));
+    }
+  })
+});
+/*
+*
+*/
+app.get('/sensor/soil/moisture', (req, res) => {
+  request('http://192.168.1.177', (error, response, body) => {
+    console.log('request')
+    if (!error && response.statusCode == 200) {
+      console.log(body)
+      var data = JSON.parse(body);
+      res.send(data.sensors.filter((obj) => {
+        return (obj['sensors'][0]['name'] == "umidade_solo_A1") ? true : false
+      }));
+    }
+  })
+});
+
+/**
+   _____ _____ _____   _____ _      ______  _____ 
+  / ____|_   _|  __ \ / ____| |    |  ____|/ ____|
+ | |      | | | |__) | |    | |    | |__  | (___  
+ | |      | | |  _  /| |    | |    |  __|  \___ \ 
+ | |____ _| |_| | \ \| |____| |____| |____ ____) |
+  \_____|_____|_|  \_\\_____|______|______|_____/ 
+                                                  
+                                                  
+ */
+
+
+ /*
+ *life
+ */
+app.get('/circles/life', (req, res) => {
+      res.send('life');
+
+});
+/*
+*economic
+*/
+app.get('/circles/economic', (req, res) => {
+  res.send('economic');
+  
+});
+/*
+*environment
+*/
+app.get('/circles/environment', (req, res) => {
+  res.send('environment');
+  
+});
+
+
+
+
 /*
  _____  _               _   _ _______ _____ _   _  _____ 
 |  __ \| |        /\   | \ | |__   __|_   _| \ | |/ ____|
@@ -126,7 +246,7 @@ app.get('/planting/crop/climatic', (req, res) => {
 
 
 /**
- _    _          _______      ________  _____ _______ 
+  _    _          _______      ________  _____ _______ 
  | |  | |   /\   |  __ \ \    / /  ____|/ ____|__   __|
  | |__| |  /  \  | |__) \ \  / /| |__  | (___    | |   
  |  __  | / /\ \ |  _  / \ \/ / |  __|  \___ \   | |   
@@ -194,4 +314,9 @@ function init() {
     db.close();
 
   });
+
+  /*
+  {"id":"977D205F4CDD43E39AE67A90903B48D0","name":"Arduino","version":"0.1","sensors":[{"id":"F752CBA595774EF7B07B68639B3D3506","version":"0.1","sensors":[{"id":"01","name":"nivel_tanque","type":"nivel","value":"271"}]},{"id":"58B3D398114B46D99DBF8A8C9FB8881D","version":"0.1","sensors":[{"id":"02","name":"ph_tanque","type":"ph","value":"303"}]},{"id":"A69C588D122D4892B4837F66C1E96082","version":"0.1","sensors":[{"id":"03","name":"umidade_solo_A1","type":"umidade","value":"337"}]}]}
+  */
+
 }

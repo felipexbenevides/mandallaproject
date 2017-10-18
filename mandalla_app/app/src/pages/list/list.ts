@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ResultsPage } from "../results/results";
+import { SensorsPage } from "../sensors/sensors";
+
 
 @Component({
   selector: 'page-list',
@@ -9,49 +11,60 @@ import { ResultsPage } from "../results/results";
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{ title: string, note: string, icon: string }>;
+  items: Array<{ title: string, note: string, icon: string, type: string }>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [
       {
         title: '/planting/crop/:crop',
         note: 'informações específicas de uma cultura',
-        icon: 'ios-flower'
+        icon: 'ios-flower',
+        type: 'planting'
       },
       {
         title: '/planting/crop',
         note: 'culturas presentes',
-        icon: 'ios-flower'
+        icon: 'ios-flower',
+        type: 'planting'
       },
       {
         title: '/planting/crop/:id/companion',
         note: 'culturas companheiras',
-        icon: 'ios-flower'
+        icon: 'ios-flower',
+        type: 'planting'
       },
       {
         title: '/planting/crop/:id/enemy',
         note: 'culturas inimigas',
-        icon: 'ios-flower'
+        icon: 'ios-flower',
+        type: 'planting'
       },
       {
         title: '/planting/crop/:id/intercropping',
         note: 'consórcio',
-        icon: 'ios-flower'
+        icon: 'ios-flower',
+        type: 'planting'
       },
       {
         title: '/sensor/water/level',
         note: 'nível de água do tanque central',
-        icon: 'cog'
+        icon: 'cog',
+        type: 'sensor'
+
       },
       {
         title: '/sensor/water/ph',
         note: 'nível do ph da água do tanque central',
-        icon: 'cog'
+        icon: 'cog',
+        type: 'sensor'
+
       },
       {
         title: '/sensor/soil/moisture',
         note: 'umidade do solo',
-        icon: 'cog'
+        icon: 'cog',
+        type: 'sensor'
+
       }
     ];
     // // If we navigated to this page, we will have an item available as a nav param
@@ -70,11 +83,22 @@ export class ListPage {
     //   });
     // }
   }
-
   itemTapped(url: any, event?: any, item?: any) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ResultsPage, {
-      url: url
-    });
+    switch (item.type) {
+      case 'planting':
+        this.navCtrl.push(ResultsPage, {
+          url: url
+        });
+        break;
+        case 'sensor':
+        this.navCtrl.push(SensorsPage, {
+          url: url
+        });
+        break;
+      default:
+        break;
+    }
+
   }
 }
