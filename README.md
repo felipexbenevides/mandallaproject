@@ -45,7 +45,7 @@ O arduino funciona como um serviço online que disponibiliza a leitura dos senso
 ```
 {
 	"id": "0019B9FBE258",
-	"nade": "Arduino",
+	"nOde": "Arduino",
 	"version": "0.1",
 	"sensors": [
 		{
@@ -90,6 +90,47 @@ O arduino funciona como um serviço online que disponibiliza a leitura dos senso
 ```
 
 
+APIS
 
+## CULTURA
+```
+URL:'/planting/crop/:crop'
+```
+* RECEBE: ID DA CULTURA 
+* RETORNA: DADOS ESPECÍFICOS PARA ESSA CULTURA EM FORMATO JSON
+* EXEMPLO: {'number': 1, "name": "Abobrinha", "quantity": 1, "un": 'Kg/m2', "harvest": 1, "intercropping": "Abobrinha,Cenoura,Milho", "companion": "", "enemy": ""}
 
+## LISTA DE CULTURAS
+``` URL:'/planting/crop/' ```
+* RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
+* RETORNA:LISTA EM FORMATO JSON DE INFORMACOES RESUMIDAS DE TODAS AS CULTURAS
+* EXEMPLO: { 'id' : xxx, 'name' : 'MILHO', 'id': yyy, 'name' : 'FEIJAO' }
+
+## COMPANHEIRAS
+``` URL: '/planting/crop/:id/companion' ```
+* RECEBE: id da cultura
+* RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS COMPANHEIRAS PARA UMA CULTURA
+* EXEMPLO: { 'id' : xxx, 'companion':'Cenoura,Espinafre,Tomate,Repolho,Salsa' }
+
+## CULTURAS INIMIGAS
+``` URL: '/planting/crop/:id/enemy' ```
+* RECEBE: id da cultura
+* RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS INIMIGAS PARA UMA CULTURA
+* EXEMPLO: { 'id' : xxx, 'enemy':'Cenoura,Espinafre,Tomate,Repolho,Salsa' }
+
+## CONSÓRCIO
+``` URL: '/planting/crop/:id/intercropping' ```
+* RECEBE: id da cultura
+* RETORNA:LISTA EM FORMATO JSON DE INFORMACOES DE CULTURAS EM CONSORCIO PARA UMA CULTURA
+* EXEMPLO: { 'id' : xxx, 'intercropping':'Salsa,Tomate,Milho,Cenoura' }
+
+## NAO IMPLEMENTADO CRIAR NOVO PLANTIO 
+``` URL:/planting/' ```
+* POST
+
+## NAO IMPLEMENTADO DADOS INMET 
+``` URL:'/planting/crop/climatic' ```
+
+## NAO IMPLEMENTADO: COLHEITAS A OCORRER 
+``` URL: '/harvest/' ```
 
