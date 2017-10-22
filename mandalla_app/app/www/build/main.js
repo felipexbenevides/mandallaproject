@@ -1,23 +1,91 @@
 webpackJsonp([0],{
 
-/***/ 108:
-/***/ (function(module, exports) {
+/***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 108;
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SensorsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(31);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the SensorsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var SensorsPage = (function () {
+    function SensorsPage(navCtrl, navParams, http) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.http = http;
+        this.url = this.navParams.get('url');
+        if (this.url) {
+            this.sensor().then(function (result) {
+                console.log(JSON.parse(result['_body']));
+                _this.sensors = JSON.parse(result['_body']);
+            });
+        }
+        else {
+            this.list().then(function (result) {
+                console.log(JSON.parse(result['_body']));
+                _this.sensors = JSON.parse(result['_body']);
+                _this.sensors = _this.sensors['sensors'];
+            });
+        }
+    }
+    /**
+     * list
+     */
+    SensorsPage.prototype.list = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.api('/sensors').then(function (result) {
+                resolve(result);
+            });
+        });
+    };
+    /**
+     * sensor
+     */
+    SensorsPage.prototype.sensor = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.api(_this.url).then(function (result) {
+                resolve(result);
+            });
+        });
+    };
+    SensorsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad SensorsPage');
+    };
+    return SensorsPage;
+}());
+SensorsPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-sensors',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/'<!--\n  Generated template for the SensorsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Sensores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let item of sensors; let i = index" style="border-top: 4px solid green">\n    <ion-card-content>\n      <h1>\n        {{item[\'sensors\'][0][\'id\']}}. {{ ((item[\'sensors\'][0][\'name\']).replace("_", " ").toUpperCase()) }}\n      </h1>\n      <p>Tipo: {{item[\'sensors\'][0][\'type\']}}</p>\n      <p>Versão: {{item[\'version\']}}</p>\n      \n      <!-- <ion-card-title> -->\n      <!-- </ion-card-title> -->\n      <!-- <label>Identificador:</label> -->\n      <ion-badge color="secondary">{{ item[\'sensors\'][0][\'value\'] }}</ion-badge>\n      <!-- <code>\n        Valor: {{ item[\'sensors\'][0][\'value\'] }}\n      </code> -->\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
+], SensorsPage);
+
+//# sourceMappingURL=sensors.js.map
 
 /***/ }),
 
-/***/ 150:
+/***/ 109:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -30,7 +98,24 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 150;
+webpackEmptyAsyncContext.id = 109;
+
+/***/ }),
+
+/***/ 151:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 151;
 
 /***/ }),
 
@@ -77,7 +162,7 @@ HomePage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__results_results__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sensors_sensors__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sensors_sensors__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -196,7 +281,7 @@ ListPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__companion_companion__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__enemy_enemy__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__intercropping_intercropping__ = __webpack_require__(200);
@@ -485,6 +570,8 @@ ConfigPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlantingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -496,6 +583,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 /**
  * Generated class for the PlantingPage page.
  *
@@ -503,10 +592,128 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var PlantingPage = (function () {
-    function PlantingPage(navCtrl, navParams) {
+    function PlantingPage(http, platform, navCtrl, navParams, qrScanner) {
+        this.http = http;
+        this.platform = platform;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.qrScanner = qrScanner;
+        this.planting_date = (new Date()).toISOString();
+        this.itens = [
+            { name: "A1-1", value: ["A1", 1], _id: "59ecc86281bcb90c643f47d5" },
+            { name: "A2-1", value: ["A2", 1], _id: "59ecc86281bcb90c643f47d6" },
+            { name: "A3-1", value: ["A3", 1], _id: "59ecc86281bcb90c643f47d7" },
+            { name: "A4-1", value: ["A4", 1], _id: "59ecc86281bcb90c643f47d8" },
+            { name: "A1-2", value: ["A1", 2], _id: "59ecc86281bcb90c643f47d9" },
+            { name: "A2-2", value: ["A2", 2], _id: "59ecc86281bcb90c643f47da" },
+            { name: "A3-2", value: ["A3", 2], _id: "59ecc86281bcb90c643f47db" },
+            { name: "A4-2", value: ["A4", 2], _id: "59ecc86281bcb90c643f47dc" },
+            { name: "A1-3", value: ["A1", 3], _id: "59ecc86281bcb90c643f47dd" },
+            { name: "A2-3", value: ["A2", 3], _id: "59ecc86281bcb90c643f47de" },
+            { name: "A3-3", value: ["A3", 3], _id: "59ecc86281bcb90c643f47df" },
+            { name: "A4-3", value: ["A4", 3], _id: "59ecc86281bcb90c643f47e0" },
+            { name: "A1-4", value: ["A1", 4], _id: "59ecc86281bcb90c643f47e1" },
+            { name: "A2-4", value: ["A2", 4], _id: "59ecc86281bcb90c643f47e2" },
+            { name: "A3-4", value: ["A3", 4], _id: "59ecc86281bcb90c643f47e3" },
+            { name: "A4-4", value: ["A4", 4], _id: "59ecc86281bcb90c643f47e4" },
+            { name: "A1-5", value: ["A1", 5], _id: "59ecc86281bcb90c643f47e5" },
+            { name: "A2-5", value: ["A2", 5], _id: "59ecc86281bcb90c643f47e6" },
+            { name: "A3-5", value: ["A3", 5], _id: "59ecc86281bcb90c643f47e7" },
+            { name: "A4-5", value: ["A4", 5], _id: "59ecc86281bcb90c643f47e8" },
+            { name: "A1-6", value: ["A1", 6], _id: "59ecc86281bcb90c643f47e9" },
+            { name: "A2-6", value: ["A2", 6], _id: "59ecc86281bcb90c643f47ea" },
+            { name: "A3-6", value: ["A3", 6], _id: "59ecc86281bcb90c643f47eb" },
+            { name: "A4-6", value: ["A4", 6], _id: "59ecc86281bcb90c643f47ec" },
+            { name: "A1-7", value: ["A1", 7], _id: "59ecc86281bcb90c643f47ed" },
+            { name: "A2-7", value: ["A2", 7], _id: "59ecc86281bcb90c643f47ee" },
+            { name: "A3-7", value: ["A3", 7], _id: "59ecc86281bcb90c643f47ef" },
+            { name: "A4-7", value: ["A4", 7], _id: "59ecc86281bcb90c643f47f0" },
+            { name: "A1-8", value: ["A1", 8], _id: "59ecc86281bcb90c643f47f1" },
+            { name: "A2-8", value: ["A2", 8], _id: "59ecc86281bcb90c643f47f2" },
+            { name: "A3-8", value: ["A3", 8], _id: "59ecc86281bcb90c643f47f3" },
+            { name: "A4-8", value: ["A4", 8], _id: "59ecc86281bcb90c643f47f4" },
+            { name: "A1-9", value: ["A1", 9], _id: "59ecf2d8377a092d34be1c81" },
+            { name: "A2-9", value: ["A2", 9], _id: "59ecf2d8377a092d34be1c82" },
+            { name: "A3-9", value: ["A3", 9], _id: "59ecf2d8377a092d34be1c83" },
+            { name: "A4-9", value: ["A4", 9], _id: "59ecf2d8377a092d34be1c84" }
+        ];
+        this.itens2 = [
+            { _id: "59d1397f9d8ccf4ee02752ec", name: "Abobrinha" },
+            { _id: "59d1397f9d8ccf4ee02752ed", name: "Alface" },
+            { _id: "59d1397f9d8ccf4ee02752ee", name: "Berinjela" },
+            { _id: "59d1397f9d8ccf4ee02752ef", name: "Beterraba" },
+            { _id: "59d1397f9d8ccf4ee02752f0", name: "Cebola" },
+            { _id: "59d1397f9d8ccf4ee02752f1", name: "Cebolinha" },
+            { _id: "59d1397f9d8ccf4ee02752f2", name: "Cenoura" },
+            { _id: "59d1397f9d8ccf4ee02752f3", name: "Couve" },
+            { _id: "59d1397f9d8ccf4ee02752f4", name: "Espinafre" },
+            { _id: "59d1397f9d8ccf4ee02752f5", name: "Pepino" },
+            { _id: "59d1397f9d8ccf4ee02752f6", name: "Pimentao" },
+            { _id: "59d1397f9d8ccf4ee02752f7", name: "Quiabo" },
+            { _id: "59d1397f9d8ccf4ee02752f8", name: "Rabanete" },
+            { _id: "59d1397f9d8ccf4ee02752f9", name: "Repolho" },
+            { _id: "59d1397f9d8ccf4ee02752fa", name: "Tomate" },
+            { _id: "59d1397f9d8ccf4ee02752fb", name: "Coentro" },
+            { _id: "59d1397f9d8ccf4ee02752fc", name: "Milho" },
+            { _id: "59d1397f9d8ccf4ee02752fd", name: "Feijao" },
+            { _id: "59d1397f9d8ccf4ee02752fe", name: "Salsa" }
+        ];
+        console.log(this.planting_date);
+        console.log(platform);
+        // Optionally request the permission early
+        /*
+        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+          console.log('Scanned something', text);
+    
+          this.qrScanner.hide(); // hide camera preview
+          scanSub.unsubscribe(); // stop scanning
+        });
+        this.qrScanner.prepare()
+          .then((status: QRScannerStatus) => {
+            if (status.authorized) {
+              // camera permission was granted
+    
+    
+              // start scanning
+              let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+                console.log('Scanned something', text);
+    
+                this.qrScanner.hide(); // hide camera preview
+                scanSub.unsubscribe(); // stop scanning
+              });
+    
+              // show camera preview
+              this.qrScanner.show();
+    
+              // wait for user to scan something, then the observable callback will be called
+    
+            } else if (status.denied) {
+              console.log('Scanned something');
+              // camera permission was permanently denied
+              // you must use QRScanner.openSettings() method to guide the user to the settings page
+              // then they can grant the permission from there
+            } else {
+              console.log('Scanned something');
+              // permission was denied, but not permanently. You can ask for permission again at a later time.
+            }
+          })
+          .catch((e: any) => console.log('Error is', e));
+      
+      
+        */
     }
+    PlantingPage.prototype.planting = function () {
+        var data = { planting_date: this.planting_date, crop_name: this.crop_name, sector_id: this.sector_id };
+        this.http.api('/planting/', data).then(function (result) {
+            console.log(result);
+        });
+    };
+    PlantingPage.prototype.harvest = function () {
+        var data = { harvest_date: this.planting_date, sector_id: this.sector_id };
+        this.http.api('/harvest/', data).then(function (result) {
+            console.log(result);
+        });
+    };
     PlantingPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad PlantingPage');
     };
@@ -514,23 +721,24 @@ var PlantingPage = (function () {
 }());
 PlantingPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-planting',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\planting\planting.html"*/'<!--\n  Generated template for the PlantingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n      <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Plantação</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\planting\planting.html"*/,
+        selector: 'page-planting',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\planting\planting.html"*/'<!--\n  Generated template for the PlantingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Plantação</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <ion-item>\n        <ion-label>Date</ion-label>\n        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="planting_date"></ion-datetime>\n      </ion-item>\n      <br>\n      <br>\n  <ion-list>\n    <ion-item>\n      <ion-label>Setor</ion-label>\n      <ion-select [(ngModel)]="sector_id">\n        <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-item>\n      <ion-label>Cultura</ion-label>\n      <ion-select [(ngModel)]="crop_name">\n        <ion-option *ngFor="let item2 of itens2" value="{{item2.name}}">{{item2.name}}</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-list>\n  <br>\n  <br>\n  <button ion-button block (click)="planting()">Plantar</button>\n  <br>\n  <br>\n  <br>\n  <ion-list>\n      <ion-item>\n        <ion-label>Setor</ion-label>\n        <ion-select>\n          <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>\n        </ion-select>\n      </ion-item>\n    </ion-list>\n    <br>\n    <br>\n    <button ion-button block (click)="harvest()">Colher</button>    \n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\planting\planting.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__["a" /* HttpServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__["a" /* HttpServiceProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__["a" /* QRScanner */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__["a" /* QRScanner */]) === "function" && _e || Object])
 ], PlantingPage);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=planting.js.map
 
 /***/ }),
 
-/***/ 203:
+/***/ 204:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CirclesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__circle_render_circle_render__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__circle_render_circle_render__ = __webpack_require__(205);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -606,14 +814,14 @@ CirclesPage = __decorate([
 
 /***/ }),
 
-/***/ 204:
+/***/ 205:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircleRenderPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -631,10 +839,12 @@ var CircleRenderPage = (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.http = http;
-        this.vermelho = '#ff8487';
-        this.amarelo = '#faff91';
-        this.verde = '#c9ffc6';
-        this.cinza = '#dad3d5';
+        this.colors = [
+            { name: "gray", value: '#dad3d5' },
+            { name: "green", value: '#c9ffc6' },
+            { name: "yellow", value: '#faff91' },
+            { name: "red", value: '#ff8487' }
+        ];
     }
     /**
      * modal
@@ -645,40 +855,49 @@ var CircleRenderPage = (function () {
     CircleRenderPage.prototype.randomScalingFactor = function () {
         return Math.round(Math.random() * 100);
     };
-    CircleRenderPage.prototype.circle1 = function () {
+    CircleRenderPage.prototype.circle1 = function (planted) {
         var _this = this;
         var ctx1 = this.myChart1.nativeElement.getContext('2d');
         var myChart1 = new Chart(ctx1, {
             type: 'doughnut',
             data: {
                 labels: [
-                    "A1", "A2", "A3", "A4", "A6", "A7", "A8", "A9", "A10",
+                    "A1", "A2", "A3", "A4"
                 ],
                 datasets: [
                     {
                         data: [
-                            100, 100, 100, 100, 100, 100, 100, 100, 100, 100
+                            3, 3, 3, 3
                         ],
                         backgroundColor: [
-                            this.vermelho
+                            this.colors[(planted[8].status)].value,
+                            this.colors[planted[9].status].value,
+                            this.colors[planted[10].status].value,
+                            this.colors[planted[11].status].value
                         ],
                         label: 'circulo'
                     },
                     {
                         data: [
-                            10, 10, 10, 10, 10, 10, 10, 10, 10, 10
+                            2, 2, 2, 2
                         ],
                         backgroundColor: [
-                            this.verde
+                            this.colors[planted[4].status].value,
+                            this.colors[planted[5].status].value,
+                            this.colors[planted[6].status].value,
+                            this.colors[planted[7].status].value
                         ],
                         label: 'circulo'
                     },
                     {
                         data: [
-                            1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+                            1, 1, 1, 1
                         ],
                         backgroundColor: [
-                            this.amarelo
+                            this.colors[planted[0].status].value,
+                            this.colors[planted[1].status].value,
+                            this.colors[planted[2].status].value,
+                            this.colors[planted[3].status].value
                         ],
                         label: 'circulo'
                     }
@@ -707,7 +926,7 @@ var CircleRenderPage = (function () {
             }
         });
     };
-    CircleRenderPage.prototype.circle2 = function () {
+    CircleRenderPage.prototype.circle2 = function (planted) {
         this.myChart1.nativeElement.style.display = 'none';
         var ctx2 = this.myChart2.nativeElement.getContext('2d');
         var myChart2 = new Chart(ctx2, {
@@ -723,46 +942,61 @@ var CircleRenderPage = (function () {
                 datasets: [
                     {
                         data: [
-                            100, 100, 100, 100, 100, 100, 100, 100, 100, 100
+                            8, 8, 8, 8
                         ],
                         backgroundColor: [
-                            this.vermelho
+                            this.colors[planted[28].status].value,
+                            this.colors[planted[29].status].value,
+                            this.colors[planted[30].status].value,
+                            this.colors[planted[31].status].value,
                         ],
                         label: 'circulo'
                     },
                     {
                         data: [
-                            10, 10, 10, 10, 10, 10, 10, 10, 10, 10
+                            7, 7, 7, 7
                         ],
                         backgroundColor: [
-                            this.verde
+                            this.colors[planted[24].status].value,
+                            this.colors[planted[25].status].value,
+                            this.colors[planted[26].status].value,
+                            this.colors[planted[27].status].value,
                         ],
                         label: 'circulo'
                     },
                     {
                         data: [
-                            1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+                            6, 6, 6, 6
                         ],
                         backgroundColor: [
-                            this.amarelo
+                            this.colors[planted[20].status].value,
+                            this.colors[planted[21].status].value,
+                            this.colors[planted[22].status].value,
+                            this.colors[planted[23].status].value,
                         ],
                         label: 'circulo'
                     },
                     {
                         data: [
-                            1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+                            5, 5, 5, 5
                         ],
                         backgroundColor: [
-                            this.amarelo
+                            this.colors[planted[16].status].value,
+                            this.colors[planted[17].status].value,
+                            this.colors[planted[18].status].value,
+                            this.colors[planted[19].status].value,
                         ],
                         label: 'circulo'
                     },
                     {
                         data: [
-                            1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+                            4, 4, 4, 4
                         ],
                         backgroundColor: [
-                            this.amarelo
+                            this.colors[planted[12].status].value,
+                            this.colors[planted[13].status].value,
+                            this.colors[planted[14].status].value,
+                            this.colors[planted[15].status].value
                         ],
                         label: 'circulo'
                     }
@@ -784,7 +1018,7 @@ var CircleRenderPage = (function () {
             }
         });
     };
-    CircleRenderPage.prototype.circle3 = function () {
+    CircleRenderPage.prototype.circle3 = function (planted) {
         this.myChart1.nativeElement.style.display = 'none';
         this.myChart2.nativeElement.style.display = 'none';
         var ctx3 = this.myChart3.nativeElement.getContext('2d');
@@ -801,10 +1035,13 @@ var CircleRenderPage = (function () {
                 datasets: [
                     {
                         data: [
-                            1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+                            1, 1, 1, 1
                         ],
                         backgroundColor: [
-                            this.amarelo
+                            this.colors[planted[32].status].value,
+                            this.colors[planted[33].status].value,
+                            this.colors[planted[34].status].value,
+                            this.colors[planted[35].status].value,
                         ],
                         label: 'circulo'
                     }
@@ -827,20 +1064,24 @@ var CircleRenderPage = (function () {
         });
     };
     CircleRenderPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
         var url = this.navParams.get('url');
-        switch (url) {
-            case '/circles/life':
-                this.circle1();
-                break;
-            case '/circles/economic':
-                this.circle2();
-                break;
-            case '/circles/environment':
-                this.circle3();
-                break;
-            default:
-                break;
-        }
+        this.http.api('/planting/sector/planted').then(function (result) {
+            console.log(JSON.parse(result["_body"]));
+            switch (url) {
+                case '/circles/life':
+                    _this.circle1(JSON.parse(result["_body"]));
+                    break;
+                case '/circles/economic':
+                    _this.circle2(JSON.parse(result["_body"]));
+                    break;
+                case '/circles/environment':
+                    _this.circle3(JSON.parse(result["_body"]));
+                    break;
+                default:
+                    break;
+            }
+        });
         console.log('ionViewDidLoad PlantingPage');
     };
     return CircleRenderPage;
@@ -868,13 +1109,13 @@ CircleRenderPage = __decorate([
 
 /***/ }),
 
-/***/ 205:
+/***/ 206:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(225);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -882,7 +1123,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 224:
+/***/ 225:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -890,29 +1131,31 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_config_config__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_charts_charts__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_sensors_sensors__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_charts_charts__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_sensors_sensors__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_planting_planting__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_circle_render_circle_render__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_circles_circles__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_circle_render_circle_render__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_circles_circles__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_list_list__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_results_results__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_companion_companion__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_enemy_enemy__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_intercropping_intercropping__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_status_bar__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_status_bar__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_splash_screen__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_http_service_http_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_http_service_http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_qr_scanner__ = __webpack_require__(203);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -957,7 +1200,7 @@ AppModule = __decorate([
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */]),
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
@@ -980,7 +1223,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_18__ionic_native_splash_screen__["a" /* SplashScreen */],
             { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
-            __WEBPACK_IMPORTED_MODULE_19__providers_http_service_http_service__["a" /* HttpServiceProvider */]
+            __WEBPACK_IMPORTED_MODULE_19__providers_http_service_http_service__["a" /* HttpServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_20__ionic_native_qr_scanner__["a" /* QRScanner */]
         ]
     })
 ], AppModule);
@@ -989,22 +1233,22 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 264:
+/***/ 265:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_list_list__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_config_config__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_sensors_sensors__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_sensors_sensors__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_planting_planting__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_circles_circles__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_http_service_http_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_circles_circles__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_http_service_http_service__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1104,7 +1348,7 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 274:
+/***/ 275:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1149,14 +1393,14 @@ ChartsPage = __decorate([
 
 /***/ }),
 
-/***/ 39:
+/***/ 31:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpServiceProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(274);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1180,116 +1424,42 @@ var HttpServiceProvider = (function () {
     function HttpServiceProvider(http) {
         this.http = http;
         this.server = 'http://localhost';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
+        this.headers.set('content-type', 'application/json');
         console.log('Hello HttpServiceProvider Provider');
     }
     /**
      * api
      */
-    HttpServiceProvider.prototype.api = function (url) {
+    HttpServiceProvider.prototype.api = function (url, data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
             console.log('http://localhost' + url);
-            _this.http.get('http://localhost' + url).subscribe(function (res) {
-                console.log(res);
-                resolve(res);
-            });
+            if (data) {
+                _this.http.post('http://localhost' + url, data, { headers: _this.headers }).subscribe(function (res) {
+                    console.log(res);
+                    resolve(res);
+                });
+            }
+            else {
+                _this.http.get('http://localhost' + url).subscribe(function (res) {
+                    console.log(res);
+                    resolve(res);
+                });
+            }
         });
     };
     return HttpServiceProvider;
 }());
 HttpServiceProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], HttpServiceProvider);
 
+var _a;
 //# sourceMappingURL=http-service.js.map
-
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SensorsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(39);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the SensorsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var SensorsPage = (function () {
-    function SensorsPage(navCtrl, navParams, http) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.http = http;
-        this.url = this.navParams.get('url');
-        if (this.url) {
-            this.sensor().then(function (result) {
-                console.log(JSON.parse(result['_body']));
-                _this.sensors = JSON.parse(result['_body']);
-            });
-        }
-        else {
-            this.list().then(function (result) {
-                console.log(JSON.parse(result['_body']));
-                _this.sensors = JSON.parse(result['_body']);
-                _this.sensors = _this.sensors['sensors'];
-            });
-        }
-    }
-    /**
-     * list
-     */
-    SensorsPage.prototype.list = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.api('/sensors').then(function (result) {
-                resolve(result);
-            });
-        });
-    };
-    /**
-     * sensor
-     */
-    SensorsPage.prototype.sensor = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.api(_this.url).then(function (result) {
-                resolve(result);
-            });
-        });
-    };
-    SensorsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad SensorsPage');
-    };
-    return SensorsPage;
-}());
-SensorsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-sensors',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/'<!--\n  Generated template for the SensorsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Sensores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let item of sensors; let i = index" style="border-top: 4px solid green">\n    <ion-card-content>\n      <h1>\n        {{item[\'sensors\'][0][\'id\']}}. {{ ((item[\'sensors\'][0][\'name\']).replace("_", " ").toUpperCase()) }}\n      </h1>\n      <p>Tipo: {{item[\'sensors\'][0][\'type\']}}</p>\n      <p>Versão: {{item[\'version\']}}</p>\n      \n      <!-- <ion-card-title> -->\n      <!-- </ion-card-title> -->\n      <!-- <label>Identificador:</label> -->\n      <ion-badge color="secondary">{{ item[\'sensors\'][0][\'value\'] }}</ion-badge>\n      <!-- <code>\n        Valor: {{ item[\'sensors\'][0][\'value\'] }}\n      </code> -->\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
-], SensorsPage);
-
-//# sourceMappingURL=sensors.js.map
 
 /***/ })
 
-},[205]);
+},[206]);
 //# sourceMappingURL=main.js.map

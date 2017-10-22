@@ -25,7 +25,20 @@ var request = require('request');
 /**
  * UTIL
  */
-
+function update(collection, filter, data) {
+  return new Promise((resolve, reject) => {
+    MongoClient.connect('mongodb://localhost:27017/mandalla', (err, db) => {
+      if (err) return console.log(err);
+      return db.collection(collection).updateOne(filter, data, function (err, r) {
+        db.close();
+        resolve(r);
+        if (err) {
+          console.log(err);
+        }
+      });
+    });
+  });
+}
 function find(collection, filter, fields) {
   return new Promise((resolve, reject) => {
     MongoClient.connect('mongodb://localhost:27017/mandalla', (err, db) => {
@@ -43,6 +56,7 @@ function find(collection, filter, fields) {
  */
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type');
   var d = new Date();
   console.warn('Request Time:', d.toUTCString());
   console.log('Request Type:', req.method);
@@ -145,11 +159,11 @@ app.get('/sensor/soil/moisture', (req, res) => {
  */
 
 
- /*
- *life
- */
+/*
+*life
+*/
 app.get('/circles/life', (req, res) => {
-      res.send('life');
+  res.send('life');
 
 });
 /*
@@ -157,14 +171,14 @@ app.get('/circles/life', (req, res) => {
 */
 app.get('/circles/economic', (req, res) => {
   res.send('economic');
-  
+
 });
 /*
 *environment
 */
 app.get('/circles/environment', (req, res) => {
   res.send('environment');
-  
+
 });
 
 
@@ -232,11 +246,88 @@ app.get('/planting/crop/:crop/intercropping', (req, res) => {
 /**
  * CROP PLANTING
  */
+
+app.get('/planting/sector', (req, res) => {
+  find('sector', {}, { "_id": 1, "line": 1, "area": 1, "sets": 1 }).then((result) => {
+    res.send(result);
+  });
+});
+
+
+
+app.get('/planting/sector/planted', (req, res) => {
+  find('sector', {}, { sets: { $elemMatch: { harvest_date: { $exists: null } } }, "area": 1, "line": 1, "enabled": 1 }).then((result) => {
+
+    var newResult = result.map((element, index) => {
+      // 0-unavailable, 1-available, 2-partially harvested ,3-planted
+      if (!element.enabled) {
+        element.status = 0;
+      } else if (!element.sets) {
+        element.status = 1;
+      } else {
+        element.status = 3;
+      };
+      return element;
+    });
+
+    res.send(newResult);
+  });
+})
+
+app.get('/planting/sector/:sector', (req, res) => {
+  find('sector', { "_id": new mongo.ObjectId(req.params.sector) }, {}).then((result) => {
+    res.send(result);
+  });
+});
+
+app.get('/planting/sector/:sector/planted', (req, res) => {
+  find('sector', { "_id": new mongo.ObjectId(req.params.sector) }, { sets: { $elemMatch: { harvest_date: { $exists: null } } } }, {}).then((result) => {
+    res.send(result);
+  });
+});
+
+app.get('/planting/sector/:sector/harvested', (req, res) => {
+  find('sector', { "_id": new mongo.ObjectId(req.params.sector) }, { sets: { $elemMatch: { harvest_date: { $exists: true } } } }, {}).then((result) => {
+    res.send(result);
+  });
+});
+
 app.post('/planting/', (req, res) => {
+  console.log('POST')
+  // Update a single document
+  var data = {
+    $push: {
+      sets: {
+        "crop": req.body.crop_name,
+        "planting_date": req.body.planting_date
+      }
+    }
+  };
+  update('sector', { "_id": new mongo.ObjectId(req.body.sector_id) }, data).then((result) => {
+    console.log(result);
+  });
+
   console.log(req.body);
   res.json(req.body);
-
 });
+
+
+app.post('/sector/enabled', (req, res) => {
+  console.log('POST')
+  // Update a single document
+  var data = {
+    $set: {
+      enabled: req.body.enabled
+    }
+  };
+  update('sector', { "_id": new mongo.ObjectId(req.body.sector_id) }, data).then((result) => {
+    console.log(result);
+  });
+
+  console.log(req.body);
+  res.json(req.body);
+});
+
 
 /**
  * CROP CLIMATIC
@@ -258,7 +349,25 @@ app.get('/planting/crop/climatic', (req, res) => {
 /**
  * Harvest
  */
-app.get('/harvest/', (req, res) => {
+app.post('/harvest/', (req, res) => {
+  // Update a single document
+  var data = {
+    $set: { "sets.$.harvest_date": String(req.body.harvest_date) }
+  };
+  update('sector', {
+    "_id": new mongo.ObjectId(req.body.sector_id),
+    sets: {
+      $elemMatch: {
+        harvest_date: {
+          $exists: false
+        }
+      }
+    }
+  }, data).then((result) => {
+    console.log(result);
+  });
+  console.log(req.body);
+  res.json(req.body);
 });
 
 
@@ -288,7 +397,7 @@ function status(status) {
 function init() {
   MongoClient.connect('mongodb://localhost:27017/mandalla', (err, db) => {
     if (err) return console.log(err);
-    db.collection("crop").insertMany(
+    /*db.collection("crop").insertMany(
       [
         { 'number': 1, "name": "Abobrinha", "quantity": 1, "un": 'Kg/m2', "harvest": 1, "intercropping": "Abobrinha,Cenoura,Milho", "companion": "", "enemy": "" },
         { 'number': 2, "name": "Alface", "quantity": 2, "un": 'Kg/m2', "harvest": 1, "intercropping": "Abobrinha,Alface,Cenoura,Rabanete,Beterraba,Feijao,Milho,Cebola,Tomate", "companion": "abobrinha, cenoura, rabanete, morango, alho-poró, beterraba, rúcula, acelga, feijão, alho, chicória, milho, alho, nabo, hortelã, ervilha, cebola, couve-flor, tomate.", "enemy": "Pepino, salsa, morango, aipo." },
@@ -310,10 +419,53 @@ function init() {
         { 'number': 18, "name": "Feijao", "quantity": 0.18, "un": 'Kg/m2', "harvest": 1, "intercropping": "Feijao,Berinjela,Alface,Cenoura,Pepino,Couve,Repolho,Salsa,Beterraba,Rabanete,Tomate", "companion": "Milho, girassol, berinjela, alface, alho-poró, batata, cenoura, pepino, couves, repolho, petúnia, alecrim, segurelha, nabo, aipo, salsa, beterraba, rabanete, tomate, ervas aromaticas.", "enemy": "mandioca, alho, ervilha, cebola." },
         { 'number': 19, "name": "Salsa", "quantity": 12, "un": 'molhos/m2', "harvest": 1, "intercropping": "Salsa,Tomate,Milho,Cenoura", "companion": "tomate, aspargo, pimenta, salsa", "enemy": "alface" }
       ], function (err, r) {
+      });*/
+    db.collection("sector").insertMany(
+      [
+        // { "line": 1, "area": 'A1' },
+        // { "line": 1, "area": 'A2' },
+        // { "line": 1, "area": 'A3' },
+        // { "line": 1, "area": 'A4' },
+        // { "line": 2, "area": 'A1' },
+        // { "line": 2, "area": 'A2' },
+        // { "line": 2, "area": 'A3' },
+        // { "line": 2, "area": 'A4' },
+        // { "line": 3, "area": 'A1' },
+        // { "line": 3, "area": 'A2' },
+        // { "line": 3, "area": 'A3' },
+        // { "line": 3, "area": 'A4' },
+        // { "line": 4, "area": 'A1' },
+        // { "line": 4, "area": 'A2' },
+        // { "line": 4, "area": 'A3' },
+        // { "line": 4, "area": 'A4' },
+        // { "line": 5, "area": 'A1' },
+        // { "line": 5, "area": 'A2' },
+        // { "line": 5, "area": 'A3' },
+        // { "line": 5, "area": 'A4' },
+        // { "line": 6, "area": 'A1' },
+        // { "line": 6, "area": 'A2' },
+        // { "line": 6, "area": 'A3' },
+        // { "line": 6, "area": 'A4' },
+        // { "line": 7, "area": 'A1' },
+        // { "line": 7, "area": 'A2' },
+        // { "line": 7, "area": 'A3' },
+        // { "line": 7, "area": 'A4' },
+        // { "line": 8, "area": 'A1' },
+        // { "line": 8, "area": 'A2' },
+        // { "line": 8, "area": 'A3' },
+        // { "line": 8, "area": 'A4' },
+        // { "line": 9, "area": 'A1' },
+        // { "line": 9, "area": 'A2' },
+        // { "line": 9, "area": 'A3' },
+        // { "line": 9, "area": 'A4' }
+
+      ], function (err, r) {
       });
     db.close();
 
   });
+
+
 
   /*
   {"id":"977D205F4CDD43E39AE67A90903B48D0","name":"Arduino","version":"0.1","sensors":[{"id":"F752CBA595774EF7B07B68639B3D3506","version":"0.1","sensors":[{"id":"01","name":"nivel_tanque","type":"nivel","value":"271"}]},{"id":"58B3D398114B46D99DBF8A8C9FB8881D","version":"0.1","sensors":[{"id":"02","name":"ph_tanque","type":"ph","value":"303"}]},{"id":"A69C588D122D4892B4837F66C1E96082","version":"0.1","sensors":[{"id":"03","name":"umidade_solo_A1","type":"umidade","value":"337"}]}]}

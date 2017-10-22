@@ -20,15 +20,17 @@ export class CircleRenderPage {
   @ViewChild('myChart2') myChart2: any;
   @ViewChild('myChart3') myChart3: any;
 
-  vermelho: string = '#ff8487';
-  amarelo: string = '#faff91';
-  verde: string = '#c9ffc6';
-  cinza: string = '#dad3d5';
+
+  colors: any = [
+    { name: "gray", value: '#dad3d5' },
+    { name: "green", value: '#c9ffc6' },
+    { name: "yellow", value: '#faff91' },
+    { name: "red", value: '#ff8487' }
+  ];
+
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpServiceProvider) {
-
-
   }
   /**
    * modal
@@ -41,39 +43,48 @@ export class CircleRenderPage {
     return Math.round(Math.random() * 100);
   }
 
-  public circle1() {
+  public circle1(planted) {
     var ctx1 = this.myChart1.nativeElement.getContext('2d');
     var myChart1 = new Chart(ctx1, {
       type: 'doughnut',
       data: {
         labels: [
-          "A1", "A2", "A3", "A4", "A6", "A7", "A8", "A9", "A10",
+          "A1", "A2", "A3", "A4"
         ],
         datasets: [
           {
             data: [
-              100, 100, 100, 100, 100, 100, 100, 100, 100, 100
+              3, 3, 3, 3
             ],
             backgroundColor: [
-              this.vermelho
+              this.colors[(planted[8].status)].value,
+              this.colors[planted[9].status].value,
+              this.colors[planted[10].status].value,
+              this.colors[planted[11].status].value
             ],
             label: 'circulo'
           },
           {
             data: [
-              10, 10, 10, 10, 10, 10, 10, 10, 10, 10
+              2, 2, 2, 2
             ],
             backgroundColor: [
-              this.verde
+              this.colors[planted[4].status].value,
+              this.colors[planted[5].status].value,
+              this.colors[planted[6].status].value,
+              this.colors[planted[7].status].value
             ],
             label: 'circulo'
           },
           {
             data: [
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+              1, 1, 1, 1
             ],
             backgroundColor: [
-              this.amarelo
+              this.colors[planted[0].status].value,
+              this.colors[planted[1].status].value,
+              this.colors[planted[2].status].value,
+              this.colors[planted[3].status].value
             ],
             label: 'circulo'
           }
@@ -82,7 +93,7 @@ export class CircleRenderPage {
       },
       options: {
         tooltips: {
-          custom: (tooltipModel)=>{
+          custom: (tooltipModel) => {
             console.log(tooltipModel);
             console.log(tooltipModel.body[0].lines[0].split(":"));
             this.modal(tooltipModel.body[0].lines[0].split(":"));
@@ -103,7 +114,7 @@ export class CircleRenderPage {
       }
     });
   }
-  public circle2() {
+  public circle2(planted) {
     this.myChart1.nativeElement.style.display = 'none';
     var ctx2 = this.myChart2.nativeElement.getContext('2d');
     var myChart2 = new Chart(ctx2, {
@@ -119,46 +130,62 @@ export class CircleRenderPage {
         datasets: [
           {
             data: [
-              100, 100, 100, 100, 100, 100, 100, 100, 100, 100
+              8, 8, 8, 8
             ],
             backgroundColor: [
-              this.vermelho
+              this.colors[planted[28].status].value,
+              this.colors[planted[29].status].value,
+              this.colors[planted[30].status].value,
+              this.colors[planted[31].status].value,
             ],
             label: 'circulo'
           },
           {
             data: [
-              10, 10, 10, 10, 10, 10, 10, 10, 10, 10
+              7, 7, 7, 7
             ],
             backgroundColor: [
-              this.verde
+              this.colors[planted[24].status].value,
+              this.colors[planted[25].status].value,
+              this.colors[planted[26].status].value,
+              this.colors[planted[27].status].value,
             ],
             label: 'circulo'
           },
           {
             data: [
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+              6, 6, 6, 6
             ],
             backgroundColor: [
-              this.amarelo
+              this.colors[planted[20].status].value,
+              this.colors[planted[21].status].value,
+              this.colors[planted[22].status].value,
+              this.colors[planted[23].status].value,
             ],
             label: 'circulo'
           },
           {
             data: [
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+              5, 5, 5, 5
             ],
             backgroundColor: [
-              this.amarelo
+              this.colors[planted[16].status].value,
+              this.colors[planted[17].status].value,
+              this.colors[planted[18].status].value,
+              this.colors[planted[19].status].value,
+
             ],
             label: 'circulo'
           },
           {
             data: [
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+              4, 4, 4, 4
             ],
             backgroundColor: [
-              this.amarelo
+              this.colors[planted[12].status].value,
+              this.colors[planted[13].status].value,
+              this.colors[planted[14].status].value,
+              this.colors[planted[15].status].value
             ],
             label: 'circulo'
           }
@@ -182,7 +209,7 @@ export class CircleRenderPage {
     });
 
   }
-  public circle3() {
+  public circle3(planted) {
     this.myChart1.nativeElement.style.display = 'none';
     this.myChart2.nativeElement.style.display = 'none';
 
@@ -200,10 +227,13 @@ export class CircleRenderPage {
         datasets: [
           {
             data: [
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+              1, 1, 1, 1
             ],
             backgroundColor: [
-              this.amarelo
+              this.colors[planted[32].status].value,
+              this.colors[planted[33].status].value,
+              this.colors[planted[34].status].value,
+              this.colors[planted[35].status].value,
             ],
             label: 'circulo'
           }
@@ -229,20 +259,24 @@ export class CircleRenderPage {
   ionViewDidLoad() {
 
     var url = this.navParams.get('url');
-    switch (url) {
-      case '/circles/life':
-        this.circle1();
-        break;
-      case '/circles/economic':
-        this.circle2();
-        break;
-      case '/circles/environment':
-        this.circle3();
-        break;
+    this.http.api('/planting/sector/planted').then((result) => {
+      console.log(JSON.parse(result["_body"]));
+      switch (url) {
+        case '/circles/life':
+          this.circle1(JSON.parse(result["_body"]));
+          break;
+        case '/circles/economic':
+          this.circle2(JSON.parse(result["_body"]));
+          break;
+        case '/circles/environment':
+          this.circle3(JSON.parse(result["_body"]));
+          break;
 
-      default:
-        break;
-    }
+        default:
+          break;
+      }
+    });
+
     console.log('ionViewDidLoad PlantingPage');
   }
 

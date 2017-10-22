@@ -25,6 +25,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpServiceProvider } from '../providers/http-service/http-service';
 
+import { QRScanner } from '@ionic-native/qr-scanner';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -66,7 +69,8 @@ import { HttpServiceProvider } from '../providers/http-service/http-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HttpServiceProvider
+    HttpServiceProvider,
+    QRScanner
   ]
 })
 export class AppModule {}

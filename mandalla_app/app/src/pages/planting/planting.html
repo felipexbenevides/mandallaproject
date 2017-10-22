@@ -7,15 +7,52 @@
 <ion-header>
 
   <ion-navbar color="dark">
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>Plantação</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Plantação</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-
+    <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="planting_date"></ion-datetime>
+      </ion-item>
+      <br>
+      <br>
+  <ion-list>
+    <ion-item>
+      <ion-label>Setor</ion-label>
+      <ion-select [(ngModel)]="sector_id">
+        <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>Cultura</ion-label>
+      <ion-select [(ngModel)]="crop_name">
+        <ion-option *ngFor="let item2 of itens2" value="{{item2.name}}">{{item2.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <br>
+  <br>
+  <button ion-button block (click)="planting()">Plantar</button>
+  <br>
+  <br>
+  <br>
+  <ion-list>
+      <ion-item>
+        <ion-label>Setor</ion-label>
+        <ion-select>
+          <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <br>
+    <br>
+    <button ion-button block (click)="harvest()">Colher</button>    
 </ion-content>
