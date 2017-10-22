@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ResultsPage } from "../results/results";
 import { SensorsPage } from "../sensors/sensors";
-import { PlantingPage } from "../planting/planting";
+import { CircleRenderPage } from "../circle-render/circle-render";
 
 
 
@@ -56,7 +56,7 @@ export class CirclesPage {
     // That's right, we're pushing to ourselves!
     switch (item.type) {
       case 'circle':
-        this.navCtrl.push(PlantingPage, {
+        this.navCtrl.push(CircleRenderPage, {
           url: url
         });
         break;

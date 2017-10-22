@@ -38,10 +38,10 @@ export class MyApp {
         icon: 'home'
       },
       {
-        title: 'API',
-        component: ListPage,
-        desc: 'lista das APIs disponíveis',
-        icon: 'cloud-circle'
+        title: 'Plantação',
+        component: PlantingPage,
+        desc: 'plantar e colher',
+        icon: 'nutrition'
       },
       {
         title: 'Sensores',
@@ -54,6 +54,12 @@ export class MyApp {
         component: CirclesPage,
         desc: 'setores do plantio',
         icon: 'ionic'
+      },
+      {
+        title: 'API',
+        component: ListPage,
+        desc: 'lista das APIs disponíveis',
+        icon: 'cloud-circle'
       },
       {
         title: 'Configurações',

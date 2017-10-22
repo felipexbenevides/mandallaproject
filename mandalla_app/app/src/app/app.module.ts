@@ -9,6 +9,7 @@ import { ConfigPage } from '../pages/config/config';
 import { ChartsPage } from '../pages/charts/charts';
 import { SensorsPage } from '../pages/sensors/sensors';
 import { PlantingPage } from '../pages/planting/planting';
+import { CircleRenderPage } from '../pages/circle-render/circle-render';
 import { CirclesPage } from '../pages/circles/circles';
 
 
@@ -37,7 +38,8 @@ import { HttpServiceProvider } from '../providers/http-service/http-service';
     ChartsPage,
     SensorsPage,
     PlantingPage,
-    CirclesPage
+    CirclesPage,
+    CircleRenderPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { HttpServiceProvider } from '../providers/http-service/http-service';
     ChartsPage,
     SensorsPage,
     PlantingPage,
-    CirclesPage
+    CirclesPage,
+    CircleRenderPage
   ],
   providers: [
     StatusBar,
