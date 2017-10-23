@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ResultsPage } from "../results/results";
 import { SensorsPage } from "../sensors/sensors";
 import { CircleRenderPage } from "../circle-render/circle-render";
+import { SectorPage } from "../sector/sector";
+
 
 
 
@@ -34,6 +36,12 @@ export class CirclesPage {
         note: 'circulo do equilibrio ambiental',
         icon: 'flower',
         type: 'circle'
+      },
+      {
+        title: '/sector/enabled',
+        note: 'habilitar ou indisponibilizar setor',
+        icon: 'checkmark-circle-outline',
+        type: 'sector'
       }
     ];
     // // If we navigated to this page, we will have an item available as a nav param
@@ -60,6 +68,10 @@ export class CirclesPage {
           url: url
         });
         break;
+        case 'sector':
+        this.navCtrl.push(SectorPage, {
+          url: url
+        });
       default:
         break;
     }

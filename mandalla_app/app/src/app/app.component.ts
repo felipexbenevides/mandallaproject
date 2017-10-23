@@ -4,9 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { ConfigPage } from '../pages/config/config';
-import { SensorsPage } from '../pages/sensors/sensors';
 import { PlantingPage } from '../pages/planting/planting';
 import { CirclesPage } from '../pages/circles/circles';
 
@@ -44,22 +42,10 @@ export class MyApp {
         icon: 'nutrition'
       },
       {
-        title: 'Sensores',
-        component: SensorsPage,
-        desc: 'lista de sensores',
-        icon: 'pulse'
-      },
-      {
         title: 'Circulos',
         component: CirclesPage,
         desc: 'setores do plantio',
         icon: 'ionic'
-      },
-      {
-        title: 'API',
-        component: ListPage,
-        desc: 'lista das APIs disponíveis',
-        icon: 'cloud-circle'
       },
       {
         title: 'Configurações',

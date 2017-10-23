@@ -6,8 +6,8 @@ webpackJsonp([0],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SensorsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -78,7 +78,7 @@ SensorsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-sensors',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/'<!--\n  Generated template for the SensorsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Sensores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let item of sensors; let i = index" style="border-top: 4px solid green">\n    <ion-card-content>\n      <h1>\n        {{item[\'sensors\'][0][\'id\']}}. {{ ((item[\'sensors\'][0][\'name\']).replace("_", " ").toUpperCase()) }}\n      </h1>\n      <p>Tipo: {{item[\'sensors\'][0][\'type\']}}</p>\n      <p>Versão: {{item[\'version\']}}</p>\n      \n      <!-- <ion-card-title> -->\n      <!-- </ion-card-title> -->\n      <!-- <label>Identificador:</label> -->\n      <ion-badge color="secondary">{{ item[\'sensors\'][0][\'value\'] }}</ion-badge>\n      <!-- <code>\n        Valor: {{ item[\'sensors\'][0][\'value\'] }}\n      </code> -->\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
 ], SensorsPage);
 
 //# sourceMappingURL=sensors.js.map
@@ -125,7 +125,7 @@ webpackEmptyAsyncContext.id = 151;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -147,7 +147,7 @@ HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Mandala Project</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding text-center>\n  <img src="assets/imgs/logo.png"/>\n        \n        <p margin>\n          O sistema agrícola mandala é uma plantação sustentável com formato de círculo. Cada anel é destinado a um determinado tipo de cultivo e um ajuda o outro a sobreviver.\n        </p>\n\n  \n  <!-- <button ion-button secondary menuToggle color="danger">Toggle Menu</button> -->\n</ion-content>\n<ion-footer text-center padding>Conheça a página do projeto <a href="https://github.com/felipexbenevides/mandallaproject"> clicando aqui!</a></ion-footer>\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
@@ -158,10 +158,86 @@ HomePage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfigPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__list_list__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sensors_sensors__ = __webpack_require__(100);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the ConfigPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ConfigPage = (function () {
+    function ConfigPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.items = [
+            {
+                title: 'Sensores',
+                component: __WEBPACK_IMPORTED_MODULE_3__sensors_sensors__["a" /* SensorsPage */],
+                desc: 'lista de sensores',
+                icon: 'pulse'
+            },
+            {
+                title: 'API',
+                component: __WEBPACK_IMPORTED_MODULE_2__list_list__["a" /* ListPage */],
+                desc: 'lista das APIs disponíveis',
+                icon: 'cloud-circle'
+            },
+        ];
+    }
+    ConfigPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ConfigPage');
+    };
+    ConfigPage.prototype.itemTapped = function (title, event, item) {
+        // That's right, we're pushing to ourselves!
+        switch (title) {
+            case 'API':
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__list_list__["a" /* ListPage */], {});
+                break;
+            case 'Sensores':
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__sensors_sensors__["a" /* SensorsPage */], {});
+                break;
+            default:
+                break;
+        }
+    };
+    return ConfigPage;
+}());
+ConfigPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-config',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\config\config.html"*/'<!--\n  Generated template for the ConfigPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Configurações</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor="let item of items" (click)="itemTapped(item.title, $event, item)">\n      <ion-avatar item-start>\n        <ion-icon name="{{ item.icon }}" style="font-size:48px;"></ion-icon>\n      </ion-avatar>\n      <h2> {{item.title}}</h2>\n      <p>{{item.note}}</p>\n    </ion-item>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\config\config.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+], ConfigPage);
+
+//# sourceMappingURL=config.js.map
+
+/***/ }),
+
+/***/ 197:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__results_results__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__results_results__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sensors_sensors__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -267,24 +343,24 @@ ListPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-list',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\list\list.html"*/' <ion-header>\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title >API</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor="let item of items" (click)="itemTapped(item.title, $event, item)">\n      <ion-avatar item-start>\n        <ion-icon name="{{ item.icon }}" style="font-size:48px;"></ion-icon>\n      </ion-avatar>\n      <h2> {{item.title}}</h2>\n      <p>{{item.note}}</p>\n    </ion-item>   \n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>\n\n<!-- <ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-left></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-right>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content> -->\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\list\list.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], ListPage);
 
 //# sourceMappingURL=list.js.map
 
 /***/ }),
 
-/***/ 197:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__companion_companion__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__enemy_enemy__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__intercropping_intercropping__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__companion_companion__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__enemy_enemy__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__intercropping_intercropping__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -369,20 +445,20 @@ ResultsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-results',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\results\results.html"*/'<!--\n  Generated template for the ResultsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color=\'dark\'>\n    <ion-title>Culturas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n<ion-card *ngFor="let item of results; let i = index">\n  <ion-card-content>\n    <!-- <ion-card-title> -->\n    <h1>    \n    {{ item.name }}\n    </h1>\n      \n      <!-- </ion-card-title> -->\n    <label>Identificador:</label>\n    <p>\n    {{item._id}}\n    </p>\n  </ion-card-content>\n      <button ion-button clear small (click)="itemTapped(\'companion\', \'/planting/crop/\'+item._id+\'/companion\', item.name)">\n        <div>Companheiras</div>\n      </button>\n      <button ion-button  clear small (click)="itemTapped(\'enemy\', \'/planting/crop/\'+item._id+\'/enemy\', item.name)">\n        <div>Inimigas</div>\n      </button>\n      <button ion-button  clear small (click)="itemTapped(\'intercropping\',  \'/planting/crop/\'+item._id+\'/intercropping\', item.name)">\n        <div>Consórcio</div>\n      </button>\n</ion-card>\n</ion-content>\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\results\results.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
 ], ResultsPage);
 
 //# sourceMappingURL=results.js.map
 
 /***/ }),
 
-/***/ 198:
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanionPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -417,20 +493,20 @@ CompanionPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-companion',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\companion\companion.html"*/'<!--\n  Generated template for the CompanionPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Companheiras</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n<ion-card>\n\n\n  <ion-card-content>\n    <h1>{{name}}</h1>\n    <h3>Culturas companheiras:</h3>  \n    <hr>\n    <!-- Add card content here! -->\n<p>{{data[0].companion}}</p>\n    \n  </ion-card-content>\n\n</ion-card>\n</ion-content>\n\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\companion\companion.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], CompanionPage);
 
 //# sourceMappingURL=companion.js.map
 
 /***/ }),
 
-/***/ 199:
+/***/ 200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EnemyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -464,20 +540,20 @@ EnemyPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-enemy',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\enemy\enemy.html"*/'<!--\n  Generated template for the EnemyPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Inimigas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-card>\n\n\n    <ion-card-content>\n      <h1>{{name}}</h1>\n      <h3>Culturas inimigas:</h3>\n      <hr>\n      <!-- Add card content here! -->\n      <p>{{data[0].enemy}}</p>\n\n    </ion-card-content>\n\n  </ion-card>\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\enemy\enemy.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], EnemyPage);
 
 //# sourceMappingURL=enemy.js.map
 
 /***/ }),
 
-/***/ 200:
+/***/ 201:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IntercroppingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -511,55 +587,10 @@ IntercroppingPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-intercropping',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\intercropping\intercropping.html"*/'<!--\n  Generated template for the IntercroppingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Intercropping</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n  <ion-card>\n\n\n    <ion-card-content>\n      <h1>{{name}}</h1>\n      <h3>Consórcio:</h3>\n      <hr>\n\n      <!-- Add card content here! -->\n      <p>{{data[0].intercropping}}</p>\n\n    </ion-card-content>\n\n  </ion-card>\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\intercropping\intercropping.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], IntercroppingPage);
 
 //# sourceMappingURL=intercropping.js.map
-
-/***/ }),
-
-/***/ 201:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfigPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the ConfigPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ConfigPage = (function () {
-    function ConfigPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    ConfigPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ConfigPage');
-    };
-    return ConfigPage;
-}());
-ConfigPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-config',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\config\config.html"*/'<!--\n  Generated template for the ConfigPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Configurações</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\config\config.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
-], ConfigPage);
-
-//# sourceMappingURL=config.js.map
 
 /***/ }),
 
@@ -569,9 +600,9 @@ ConfigPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlantingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -599,6 +630,9 @@ var PlantingPage = (function () {
         this.navParams = navParams;
         this.qrScanner = qrScanner;
         this.planting_date = (new Date()).toISOString();
+        this.planting_flag = 1;
+        this.harvest_flag = 1;
+        this.modify_flag = 0;
         this.itens = [
             { name: "A1-1", value: ["A1", 1], _id: "59ecc86281bcb90c643f47d5" },
             { name: "A2-1", value: ["A2", 1], _id: "59ecc86281bcb90c643f47d6" },
@@ -658,6 +692,32 @@ var PlantingPage = (function () {
             { _id: "59d1397f9d8ccf4ee02752fd", name: "Feijao" },
             { _id: "59d1397f9d8ccf4ee02752fe", name: "Salsa" }
         ];
+        console.log(this.navParams);
+        if (this.navParams.get("sector_id")) {
+            this.sector_id = this.navParams.get("sector_id");
+            this.modify_flag = 0;
+            this.planting_flag = 0;
+            this.harvest_flag = 0;
+        }
+        if (this.navParams.get("action")) {
+            console.log('action ', this.navParams.get("action"));
+            switch (this.navParams.get("action")) {
+                case "0":
+                    this.planting_flag = 1;
+                    break;
+                case "1":
+                    this.harvest_flag = 1;
+                    break;
+                case "2":
+                    this.modify_flag = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
+        if (this.navParams.get("sector_name")) {
+            this.sector_name = this.navParams.get("sector_name");
+        }
         console.log(this.planting_date);
         console.log(platform);
         // Optionally request the permission early
@@ -702,16 +762,29 @@ var PlantingPage = (function () {
       
         */
     }
+    PlantingPage.prototype.modify = function () {
+        var _this = this;
+        console.log(this.enabled);
+        console.log(this.sector_id);
+        this.http.api('/sector/enabled', { sector_id: this.sector_id, enabled: this.enabled }).then(function (result) {
+            console.log(result);
+            _this.navCtrl.popToRoot();
+        });
+    };
     PlantingPage.prototype.planting = function () {
+        var _this = this;
         var data = { planting_date: this.planting_date, crop_name: this.crop_name, sector_id: this.sector_id };
         this.http.api('/planting/', data).then(function (result) {
             console.log(result);
+            _this.navCtrl.popToRoot();
         });
     };
     PlantingPage.prototype.harvest = function () {
+        var _this = this;
         var data = { harvest_date: this.planting_date, sector_id: this.sector_id };
         this.http.api('/harvest/', data).then(function (result) {
             console.log(result);
+            _this.navCtrl.popToRoot();
         });
     };
     PlantingPage.prototype.ionViewDidLoad = function () {
@@ -721,9 +794,9 @@ var PlantingPage = (function () {
 }());
 PlantingPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-planting',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\planting\planting.html"*/'<!--\n  Generated template for the PlantingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Plantação</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <ion-item>\n        <ion-label>Date</ion-label>\n        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="planting_date"></ion-datetime>\n      </ion-item>\n      <br>\n      <br>\n  <ion-list>\n    <ion-item>\n      <ion-label>Setor</ion-label>\n      <ion-select [(ngModel)]="sector_id">\n        <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-item>\n      <ion-label>Cultura</ion-label>\n      <ion-select [(ngModel)]="crop_name">\n        <ion-option *ngFor="let item2 of itens2" value="{{item2.name}}">{{item2.name}}</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-list>\n  <br>\n  <br>\n  <button ion-button block (click)="planting()">Plantar</button>\n  <br>\n  <br>\n  <br>\n  <ion-list>\n      <ion-item>\n        <ion-label>Setor</ion-label>\n        <ion-select>\n          <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>\n        </ion-select>\n      </ion-item>\n    </ion-list>\n    <br>\n    <br>\n    <button ion-button block (click)="harvest()">Colher</button>    \n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\planting\planting.html"*/,
+        selector: 'page-planting',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\planting\planting.html"*/'<!--\n  Generated template for the PlantingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Plantação</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <h3 *ngIf="sector_name">\n    Setor: {{sector_name}}\n  </h3>\n\n  <ion-item>\n    <ion-label>Date</ion-label>\n    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="planting_date"></ion-datetime>\n  </ion-item>\n  <br>\n  <br>\n\n  <ion-list *ngIf="!sector_name">\n    <ion-item>\n      <ion-label>Setor</ion-label>\n      <ion-select [(ngModel)]="sector_id">\n        <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>\n      </ion-select>\n\n    </ion-item>\n  </ion-list>\n\n  <ion-list *ngIf="planting_flag == 1">\n    <ion-item>\n      <ion-label>Cultura</ion-label>\n      <ion-select [(ngModel)]="crop_name">\n        <ion-option *ngFor="let item2 of itens2" value="{{item2.name}}">{{item2.name}}</ion-option>\n      </ion-select>\n    </ion-item>\n    <br>\n    <br>\n    <button ion-button block (click)="planting()">Plantar</button>\n    <br>\n    <br>\n  </ion-list>\n  <br>\n  <ion-list *ngIf="!sector_name">\n    <ion-item>\n      <ion-label>Setor</ion-label>\n      <ion-select>\n        <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-list>\n\n  <ion-list *ngIf="harvest_flag == 1">\n\n    <br>\n    <br>\n    <button ion-button block (click)="harvest()">Colher</button>\n  </ion-list>\n\n  <div *ngIf="modify_flag == 1">\n    <br>\n    <br>\n    <ion-item>\n      <ion-label> Habilitado</ion-label>\n      <ion-toggle checked="false" [(ngModel)]="enabled"></ion-toggle>\n    </ion-item>\n    <br>\n    <button ion-button block (click)="modify()">Modificar</button>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\planting\planting.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__["a" /* HttpServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__["a" /* HttpServiceProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__["a" /* QRScanner */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__["a" /* QRScanner */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__["a" /* HttpServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__["a" /* HttpServiceProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__["a" /* QRScanner */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_qr_scanner__["a" /* QRScanner */]) === "function" && _e || Object])
 ], PlantingPage);
 
 var _a, _b, _c, _d, _e;
@@ -737,8 +810,9 @@ var _a, _b, _c, _d, _e;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CirclesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__circle_render_circle_render__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sector_sector__ = __webpack_require__(206);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -748,6 +822,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -773,6 +848,12 @@ var CirclesPage = (function () {
                 note: 'circulo do equilibrio ambiental',
                 icon: 'flower',
                 type: 'circle'
+            },
+            {
+                title: '/sector/enabled',
+                note: 'habilitar ou indisponibilizar setor',
+                icon: 'checkmark-circle-outline',
+                type: 'sector'
             }
         ];
         // // If we navigated to this page, we will have an item available as a nav param
@@ -797,6 +878,10 @@ var CirclesPage = (function () {
                     url: url
                 });
                 break;
+            case 'sector':
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__sector_sector__["a" /* SectorPage */], {
+                    url: url
+                });
             default:
                 break;
         }
@@ -807,7 +892,7 @@ CirclesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-circles',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\circles\circles.html"*/' <ion-header>\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title >Circulos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor="let item of items" (click)="itemTapped(item.title, $event, item)">\n      <ion-avatar item-start>\n        <ion-icon name="{{ item.icon }}" style="font-size:48px;"></ion-icon>\n      </ion-avatar>\n      <h2> {{item.title}}</h2>\n      <p>{{item.note}}</p>\n    </ion-item>   \n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>\n\n<!-- <ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-left></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-right>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content> -->\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\circles\circles.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], CirclesPage);
 
 //# sourceMappingURL=circles.js.map
@@ -820,8 +905,9 @@ CirclesPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CircleRenderPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modal_modal__ = __webpack_require__(277);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -834,8 +920,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CircleRenderPage = (function () {
-    function CircleRenderPage(navCtrl, navParams, http) {
+    function CircleRenderPage(modalCtrl, navCtrl, navParams, http) {
+        this.modalCtrl = modalCtrl;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.http = http;
@@ -845,12 +933,54 @@ var CircleRenderPage = (function () {
             { name: "yellow", value: '#faff91' },
             { name: "red", value: '#ff8487' }
         ];
+        this.sectors = {
+            A11: { name: "A1-1", value: ["A1", 1], _id: "59ecc86281bcb90c643f47d5" },
+            A21: { name: "A2-1", value: ["A2", 1], _id: "59ecc86281bcb90c643f47d6" },
+            A31: { name: "A3-1", value: ["A3", 1], _id: "59ecc86281bcb90c643f47d7" },
+            A41: { name: "A4-1", value: ["A4", 1], _id: "59ecc86281bcb90c643f47d8" },
+            A12: { name: "A1-2", value: ["A1", 2], _id: "59ecc86281bcb90c643f47d9" },
+            A22: { name: "A2-2", value: ["A2", 2], _id: "59ecc86281bcb90c643f47da" },
+            A32: { name: "A3-2", value: ["A3", 2], _id: "59ecc86281bcb90c643f47db" },
+            A42: { name: "A4-2", value: ["A4", 2], _id: "59ecc86281bcb90c643f47dc" },
+            A13: { name: "A1-3", value: ["A1", 3], _id: "59ecc86281bcb90c643f47dd" },
+            A23: { name: "A2-3", value: ["A2", 3], _id: "59ecc86281bcb90c643f47de" },
+            A33: { name: "A3-3", value: ["A3", 3], _id: "59ecc86281bcb90c643f47df" },
+            A43: { name: "A4-3", value: ["A4", 3], _id: "59ecc86281bcb90c643f47e0" },
+            A14: { name: "A1-4", value: ["A1", 4], _id: "59ecc86281bcb90c643f47e1" },
+            A24: { name: "A2-4", value: ["A2", 4], _id: "59ecc86281bcb90c643f47e2" },
+            A34: { name: "A3-4", value: ["A3", 4], _id: "59ecc86281bcb90c643f47e3" },
+            A44: { name: "A4-4", value: ["A4", 4], _id: "59ecc86281bcb90c643f47e4" },
+            A15: { name: "A1-5", value: ["A1", 5], _id: "59ecc86281bcb90c643f47e5" },
+            A25: { name: "A2-5", value: ["A2", 5], _id: "59ecc86281bcb90c643f47e6" },
+            A35: { name: "A3-5", value: ["A3", 5], _id: "59ecc86281bcb90c643f47e7" },
+            A45: { name: "A4-5", value: ["A4", 5], _id: "59ecc86281bcb90c643f47e8" },
+            A16: { name: "A1-6", value: ["A1", 6], _id: "59ecc86281bcb90c643f47e9" },
+            A26: { name: "A2-6", value: ["A2", 6], _id: "59ecc86281bcb90c643f47ea" },
+            A36: { name: "A3-6", value: ["A3", 6], _id: "59ecc86281bcb90c643f47eb" },
+            A46: { name: "A4-6", value: ["A4", 6], _id: "59ecc86281bcb90c643f47ec" },
+            A17: { name: "A1-7", value: ["A1", 7], _id: "59ecc86281bcb90c643f47ed" },
+            A27: { name: "A2-7", value: ["A2", 7], _id: "59ecc86281bcb90c643f47ee" },
+            A37: { name: "A3-7", value: ["A3", 7], _id: "59ecc86281bcb90c643f47ef" },
+            A47: { name: "A4-7", value: ["A4", 7], _id: "59ecc86281bcb90c643f47f0" },
+            A18: { name: "A1-8", value: ["A1", 8], _id: "59ecc86281bcb90c643f47f1" },
+            A28: { name: "A2-8", value: ["A2", 8], _id: "59ecc86281bcb90c643f47f2" },
+            A38: { name: "A3-8", value: ["A3", 8], _id: "59ecc86281bcb90c643f47f3" },
+            A48: { name: "A4-8", value: ["A4", 8], _id: "59ecc86281bcb90c643f47f4" },
+            A19: { name: "A1-9", value: ["A1", 9], _id: "59ecf2d8377a092d34be1c81" },
+            A29: { name: "A2-9", value: ["A2", 9], _id: "59ecf2d8377a092d34be1c82" },
+            A39: { name: "A3-9", value: ["A3", 9], _id: "59ecf2d8377a092d34be1c83" },
+            A49: { name: "A4-9", value: ["A4", 9], _id: "59ecf2d8377a092d34be1c84" }
+        };
     }
     /**
      * modal
      */
     CircleRenderPage.prototype.modal = function (data) {
+        data = (data[0] + data[1]).replace(" ", "");
         console.log(data);
+        console.log(this.sectors[data]['_id']);
+        var modal = this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__modal_modal__["a" /* ModalPage */], { sector_id: this.sectors[data]['_id'], sector_name: this.sectors[data]["name"] });
+        // modal.present();
     };
     CircleRenderPage.prototype.randomScalingFactor = function () {
         return Math.round(Math.random() * 100);
@@ -1102,9 +1232,10 @@ CircleRenderPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-circle-render',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\circle-render\circle-render.html"*/'<!--\n  Generated template for the PlantingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="dark">\n        <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n    <ion-title>Circulos</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <canvas #myChart1 id="myChart1" width="400" height="400"></canvas>\n    <canvas #myChart2 id="myChart2" width="400" height="400"></canvas>    \n    <canvas #myChart3 id="myChart3" width="400" height="400"></canvas>       \n    \n</ion-content>\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\circle-render\circle-render.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* ModalController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]) === "function" && _d || Object])
 ], CircleRenderPage);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=circle-render.js.map
 
 /***/ }),
@@ -1113,9 +1244,103 @@ CircleRenderPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SectorPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__ = __webpack_require__(28);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the SectorPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var SectorPage = (function () {
+    function SectorPage(navCtrl, navParams, http) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.http = http;
+        this.itens = [
+            { name: "A1-1", value: ["A1", 1], _id: "59ecc86281bcb90c643f47d5" },
+            { name: "A2-1", value: ["A2", 1], _id: "59ecc86281bcb90c643f47d6" },
+            { name: "A3-1", value: ["A3", 1], _id: "59ecc86281bcb90c643f47d7" },
+            { name: "A4-1", value: ["A4", 1], _id: "59ecc86281bcb90c643f47d8" },
+            { name: "A1-2", value: ["A1", 2], _id: "59ecc86281bcb90c643f47d9" },
+            { name: "A2-2", value: ["A2", 2], _id: "59ecc86281bcb90c643f47da" },
+            { name: "A3-2", value: ["A3", 2], _id: "59ecc86281bcb90c643f47db" },
+            { name: "A4-2", value: ["A4", 2], _id: "59ecc86281bcb90c643f47dc" },
+            { name: "A1-3", value: ["A1", 3], _id: "59ecc86281bcb90c643f47dd" },
+            { name: "A2-3", value: ["A2", 3], _id: "59ecc86281bcb90c643f47de" },
+            { name: "A3-3", value: ["A3", 3], _id: "59ecc86281bcb90c643f47df" },
+            { name: "A4-3", value: ["A4", 3], _id: "59ecc86281bcb90c643f47e0" },
+            { name: "A1-4", value: ["A1", 4], _id: "59ecc86281bcb90c643f47e1" },
+            { name: "A2-4", value: ["A2", 4], _id: "59ecc86281bcb90c643f47e2" },
+            { name: "A3-4", value: ["A3", 4], _id: "59ecc86281bcb90c643f47e3" },
+            { name: "A4-4", value: ["A4", 4], _id: "59ecc86281bcb90c643f47e4" },
+            { name: "A1-5", value: ["A1", 5], _id: "59ecc86281bcb90c643f47e5" },
+            { name: "A2-5", value: ["A2", 5], _id: "59ecc86281bcb90c643f47e6" },
+            { name: "A3-5", value: ["A3", 5], _id: "59ecc86281bcb90c643f47e7" },
+            { name: "A4-5", value: ["A4", 5], _id: "59ecc86281bcb90c643f47e8" },
+            { name: "A1-6", value: ["A1", 6], _id: "59ecc86281bcb90c643f47e9" },
+            { name: "A2-6", value: ["A2", 6], _id: "59ecc86281bcb90c643f47ea" },
+            { name: "A3-6", value: ["A3", 6], _id: "59ecc86281bcb90c643f47eb" },
+            { name: "A4-6", value: ["A4", 6], _id: "59ecc86281bcb90c643f47ec" },
+            { name: "A1-7", value: ["A1", 7], _id: "59ecc86281bcb90c643f47ed" },
+            { name: "A2-7", value: ["A2", 7], _id: "59ecc86281bcb90c643f47ee" },
+            { name: "A3-7", value: ["A3", 7], _id: "59ecc86281bcb90c643f47ef" },
+            { name: "A4-7", value: ["A4", 7], _id: "59ecc86281bcb90c643f47f0" },
+            { name: "A1-8", value: ["A1", 8], _id: "59ecc86281bcb90c643f47f1" },
+            { name: "A2-8", value: ["A2", 8], _id: "59ecc86281bcb90c643f47f2" },
+            { name: "A3-8", value: ["A3", 8], _id: "59ecc86281bcb90c643f47f3" },
+            { name: "A4-8", value: ["A4", 8], _id: "59ecc86281bcb90c643f47f4" },
+            { name: "A1-9", value: ["A1", 9], _id: "59ecf2d8377a092d34be1c81" },
+            { name: "A2-9", value: ["A2", 9], _id: "59ecf2d8377a092d34be1c82" },
+            { name: "A3-9", value: ["A3", 9], _id: "59ecf2d8377a092d34be1c83" },
+            { name: "A4-9", value: ["A4", 9], _id: "59ecf2d8377a092d34be1c84" }
+        ];
+    }
+    SectorPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad SectorPage');
+    };
+    SectorPage.prototype.modify = function () {
+        console.log(this.enabled);
+        console.log(this.sector_id);
+        this.http.api('/sector/enabled', { sector_id: this.sector_id, enabled: this.enabled }).then(function (result) {
+            console.log(result);
+        });
+    };
+    return SectorPage;
+}());
+SectorPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-sector',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\sector\sector.html"*/'<!--\n  Generated template for the SectorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Setores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <ion-label>Setor</ion-label>\n      <ion-select [(ngModel)]="sector_id">\n        <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>\n      </ion-select>\n    </ion-item>\n    <ion-item>\n      <ion-label> Habilitado</ion-label>\n      <ion-toggle checked="false" [(ngModel)]="enabled"></ion-toggle>\n    </ion-item>\n  </ion-list>\n  <br>\n  <br>\n  <button ion-button block (click)="modify()">Modificar</button>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\sector\sector.html"*/,
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]) === "function" && _c || Object])
+], SectorPage);
+
+var _a, _b, _c;
+//# sourceMappingURL=sector.js.map
+
+/***/ }),
+
+/***/ 207:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(226);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1123,38 +1348,42 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 225:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_config_config__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_charts_charts__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_config_config__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_charts_charts__ = __webpack_require__(276);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_sensors_sensors__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_planting_planting__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_circle_render_circle_render__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_circles_circles__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_list_list__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_results_results__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_companion_companion__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_enemy_enemy__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_intercropping_intercropping__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_status_bar__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_splash_screen__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_http_service_http_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_qr_scanner__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_sector_sector__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_modal_modal__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_list_list__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_results_results__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_companion_companion__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_enemy_enemy__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_intercropping_intercropping__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_status_bar__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_splash_screen__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_http_service_http_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_qr_scanner__ = __webpack_require__(203);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -1186,17 +1415,19 @@ AppModule = __decorate([
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */],
             __WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */],
-            __WEBPACK_IMPORTED_MODULE_12__pages_list_list__["a" /* ListPage */],
-            __WEBPACK_IMPORTED_MODULE_13__pages_results_results__["a" /* ResultsPage */],
-            __WEBPACK_IMPORTED_MODULE_14__pages_companion_companion__["a" /* CompanionPage */],
-            __WEBPACK_IMPORTED_MODULE_15__pages_enemy_enemy__["a" /* EnemyPage */],
-            __WEBPACK_IMPORTED_MODULE_16__pages_intercropping_intercropping__["a" /* IntercroppingPage */],
+            __WEBPACK_IMPORTED_MODULE_14__pages_list_list__["a" /* ListPage */],
+            __WEBPACK_IMPORTED_MODULE_15__pages_results_results__["a" /* ResultsPage */],
+            __WEBPACK_IMPORTED_MODULE_16__pages_companion_companion__["a" /* CompanionPage */],
+            __WEBPACK_IMPORTED_MODULE_17__pages_enemy_enemy__["a" /* EnemyPage */],
+            __WEBPACK_IMPORTED_MODULE_18__pages_intercropping_intercropping__["a" /* IntercroppingPage */],
             __WEBPACK_IMPORTED_MODULE_6__pages_config_config__["a" /* ConfigPage */],
             __WEBPACK_IMPORTED_MODULE_7__pages_charts_charts__["a" /* ChartsPage */],
             __WEBPACK_IMPORTED_MODULE_8__pages_sensors_sensors__["a" /* SensorsPage */],
             __WEBPACK_IMPORTED_MODULE_9__pages_planting_planting__["a" /* PlantingPage */],
             __WEBPACK_IMPORTED_MODULE_11__pages_circles_circles__["a" /* CirclesPage */],
-            __WEBPACK_IMPORTED_MODULE_10__pages_circle_render_circle_render__["a" /* CircleRenderPage */]
+            __WEBPACK_IMPORTED_MODULE_10__pages_circle_render_circle_render__["a" /* CircleRenderPage */],
+            __WEBPACK_IMPORTED_MODULE_12__pages_sector_sector__["a" /* SectorPage */],
+            __WEBPACK_IMPORTED_MODULE_13__pages_modal_modal__["a" /* ModalPage */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -1207,24 +1438,26 @@ AppModule = __decorate([
         entryComponents: [
             __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */],
             __WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */],
-            __WEBPACK_IMPORTED_MODULE_12__pages_list_list__["a" /* ListPage */],
-            __WEBPACK_IMPORTED_MODULE_13__pages_results_results__["a" /* ResultsPage */],
-            __WEBPACK_IMPORTED_MODULE_14__pages_companion_companion__["a" /* CompanionPage */],
-            __WEBPACK_IMPORTED_MODULE_15__pages_enemy_enemy__["a" /* EnemyPage */],
-            __WEBPACK_IMPORTED_MODULE_16__pages_intercropping_intercropping__["a" /* IntercroppingPage */],
+            __WEBPACK_IMPORTED_MODULE_14__pages_list_list__["a" /* ListPage */],
+            __WEBPACK_IMPORTED_MODULE_15__pages_results_results__["a" /* ResultsPage */],
+            __WEBPACK_IMPORTED_MODULE_16__pages_companion_companion__["a" /* CompanionPage */],
+            __WEBPACK_IMPORTED_MODULE_17__pages_enemy_enemy__["a" /* EnemyPage */],
+            __WEBPACK_IMPORTED_MODULE_18__pages_intercropping_intercropping__["a" /* IntercroppingPage */],
             __WEBPACK_IMPORTED_MODULE_6__pages_config_config__["a" /* ConfigPage */],
             __WEBPACK_IMPORTED_MODULE_7__pages_charts_charts__["a" /* ChartsPage */],
             __WEBPACK_IMPORTED_MODULE_8__pages_sensors_sensors__["a" /* SensorsPage */],
             __WEBPACK_IMPORTED_MODULE_9__pages_planting_planting__["a" /* PlantingPage */],
             __WEBPACK_IMPORTED_MODULE_11__pages_circles_circles__["a" /* CirclesPage */],
-            __WEBPACK_IMPORTED_MODULE_10__pages_circle_render_circle_render__["a" /* CircleRenderPage */]
+            __WEBPACK_IMPORTED_MODULE_10__pages_circle_render_circle_render__["a" /* CircleRenderPage */],
+            __WEBPACK_IMPORTED_MODULE_12__pages_sector_sector__["a" /* SectorPage */],
+            __WEBPACK_IMPORTED_MODULE_13__pages_modal_modal__["a" /* ModalPage */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_17__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_18__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_19__ionic_native_status_bar__["a" /* StatusBar */],
+            __WEBPACK_IMPORTED_MODULE_20__ionic_native_splash_screen__["a" /* SplashScreen */],
             { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
-            __WEBPACK_IMPORTED_MODULE_19__providers_http_service_http_service__["a" /* HttpServiceProvider */],
-            __WEBPACK_IMPORTED_MODULE_20__ionic_native_qr_scanner__["a" /* QRScanner */]
+            __WEBPACK_IMPORTED_MODULE_21__providers_http_service_http_service__["a" /* HttpServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_22__ionic_native_qr_scanner__["a" /* QRScanner */]
         ]
     })
 ], AppModule);
@@ -1233,22 +1466,20 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 265:
+/***/ 266:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_list_list__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_config_config__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_sensors_sensors__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_planting_planting__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_circles_circles__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_http_service_http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_config_config__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_planting_planting__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_circles_circles__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1258,8 +1489,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-
 
 
 
@@ -1287,31 +1516,19 @@ var MyApp = (function () {
             },
             {
                 title: 'Plantação',
-                component: __WEBPACK_IMPORTED_MODULE_8__pages_planting_planting__["a" /* PlantingPage */],
+                component: __WEBPACK_IMPORTED_MODULE_6__pages_planting_planting__["a" /* PlantingPage */],
                 desc: 'plantar e colher',
                 icon: 'nutrition'
             },
             {
-                title: 'Sensores',
-                component: __WEBPACK_IMPORTED_MODULE_7__pages_sensors_sensors__["a" /* SensorsPage */],
-                desc: 'lista de sensores',
-                icon: 'pulse'
-            },
-            {
                 title: 'Circulos',
-                component: __WEBPACK_IMPORTED_MODULE_9__pages_circles_circles__["a" /* CirclesPage */],
+                component: __WEBPACK_IMPORTED_MODULE_7__pages_circles_circles__["a" /* CirclesPage */],
                 desc: 'setores do plantio',
                 icon: 'ionic'
             },
             {
-                title: 'API',
-                component: __WEBPACK_IMPORTED_MODULE_5__pages_list_list__["a" /* ListPage */],
-                desc: 'lista das APIs disponíveis',
-                icon: 'cloud-circle'
-            },
-            {
                 title: 'Configurações',
-                component: __WEBPACK_IMPORTED_MODULE_6__pages_config_config__["a" /* ConfigPage */],
+                component: __WEBPACK_IMPORTED_MODULE_5__pages_config_config__["a" /* ConfigPage */],
                 desc: 'configurações básicas',
                 icon: 'construct'
             }
@@ -1334,27 +1551,27 @@ var MyApp = (function () {
     return MyApp;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Nav */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Nav */])
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Nav */]),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\app\app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar color="dark">\n      <ion-title>Mandala Project</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)"> -->\n       <!-- <ion-icon name="{{ p.icon }}"></ion-icon> {{p.title}} -->\n      <!-- </button> -->\n      <ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">\n        <ion-avatar item-start>\n          <ion-icon name="{{ p.icon }}" style="font-size:48px;"></ion-icon>\n        </ion-avatar>\n        <h2>{{p.title}}</h2>\n        <p>{{ p.desc }}</p>\n      </ion-item>      \n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\app\app.html"*/,
-        providers: [__WEBPACK_IMPORTED_MODULE_10__providers_http_service_http_service__["a" /* HttpServiceProvider */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__["a" /* HttpServiceProvider */]]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_10__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
 
-/***/ 275:
+/***/ 276:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChartsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1386,21 +1603,84 @@ ChartsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-charts',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\charts\charts.html"*/'<!--\n  Generated template for the ChartsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>charts</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\charts\charts.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], ChartsPage);
 
 //# sourceMappingURL=charts.js.map
 
 /***/ }),
 
-/***/ 31:
+/***/ 277:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__planting_planting__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__ = __webpack_require__(28);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the ModalPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ModalPage = (function () {
+    function ModalPage(http, navCtrl, navParams) {
+        var _this = this;
+        this.http = http;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.data = { area: null, line: null, enabled: null, sets: [{ crop: '', planting_date: null, harvest_date: null }] };
+        this.sector_id = this.navParams.get("sector_id");
+        this.sector_name = this.navParams.get("sector_name");
+        this.http.api("/planting/sector/" + this.sector_id).then(function (result) {
+            console.log(JSON.parse(result['_body'])[0]);
+            _this.data = JSON.parse(result['_body'])[0];
+        });
+    }
+    ModalPage.prototype.next = function () {
+        console.log(this.action);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__planting_planting__["a" /* PlantingPage */], { sector_id: this.sector_id, sector_name: this.sector_name, action: this.action });
+    };
+    ModalPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ModalPage');
+    };
+    return ModalPage;
+}());
+ModalPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-modal',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\modal\modal.html"*/'<!--\n  Generated template for the ModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Setor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-card padding>\n\n    <h2>\n    {{this.data.area}}-{{this.data.line}}\n    </h2>\n    <code>área {{this.data.area}} do {{this.data.line}}° circulo </code>\n    <br>\n    <ion-badge *ngIf="this.data.enabled == true" color="secondary">habilitado</ion-badge>\n    <ion-card-content>\n      <div *ngFor="let item of this.data.sets">\n        <small>{{(item.crop).toUpperCase()}}({{item.planting_date}})</small>\n        <p *ngIf="item.harvest_date">{{item.harvest_date}}</p>\n        <ion-badge *ngIf="this.data.enabled == true" color="light">colhido</ion-badge>\n        <br>\n      </div>\n    </ion-card-content>\n\n  </ion-card>\n  <ion-list radio-group [(ngModel)]="action">\n    <ion-list-header>\n      Setor {{sector_name}}\n    </ion-list-header>\n\n    <ion-item>\n      <ion-label>Plantar</ion-label>\n      <ion-radio checked="true" value="0"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Colher</ion-label>\n      <ion-radio value="1"></ion-radio>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Habilitar/Desabilitar</ion-label>\n      <ion-radio value="2"></ion-radio>\n    </ion-item>\n\n  </ion-list>\n  <button ion-button block (click)="next()">Avançar</button>\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\modal\modal.html"*/,
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__["a" /* HttpServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__["a" /* HttpServiceProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _c || Object])
+], ModalPage);
+
+var _a, _b, _c;
+//# sourceMappingURL=modal.js.map
+
+/***/ }),
+
+/***/ 28:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpServiceProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(275);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1453,13 +1733,12 @@ var HttpServiceProvider = (function () {
 }());
 HttpServiceProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
 ], HttpServiceProvider);
 
-var _a;
 //# sourceMappingURL=http-service.js.map
 
 /***/ })
 
-},[206]);
+},[207]);
 //# sourceMappingURL=main.js.map

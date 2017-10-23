@@ -11,6 +11,9 @@ import { SensorsPage } from '../pages/sensors/sensors';
 import { PlantingPage } from '../pages/planting/planting';
 import { CircleRenderPage } from '../pages/circle-render/circle-render';
 import { CirclesPage } from '../pages/circles/circles';
+import { SectorPage } from '../pages/sector/sector';
+import { ModalPage } from '../pages/modal/modal';
+
 
 
 import { ListPage } from '../pages/list/list';
@@ -42,7 +45,9 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     SensorsPage,
     PlantingPage,
     CirclesPage,
-    CircleRenderPage
+    CircleRenderPage,
+    SectorPage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,9 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     SensorsPage,
     PlantingPage,
     CirclesPage,
-    CircleRenderPage
+    CircleRenderPage,
+    SectorPage,
+    ModalPage
   ],
   providers: [
     StatusBar,

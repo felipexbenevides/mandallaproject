@@ -18,6 +18,13 @@ export class PlantingPage {
   planting_date: any = (new Date()).toISOString();
   crop_name: any;
   sector_id: any;
+  sector_name: any;
+  enabled: any;
+  
+  planting_flag: any = 1;
+  harvest_flag: any = 1;
+  modify_flag: any = 0;
+
   itens: any = [
     { name: "A1-1", value: ["A1", 1], _id: "59ecc86281bcb90c643f47d5" },
     { name: "A2-1", value: ["A2", 1], _id: "59ecc86281bcb90c643f47d6" },
@@ -80,6 +87,33 @@ export class PlantingPage {
 
 
   constructor(public http: HttpServiceProvider, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, private qrScanner: QRScanner) {
+    console.log(this.navParams);
+
+    if (this.navParams.get("sector_id")) {
+      this.sector_id = this.navParams.get("sector_id");
+      this.modify_flag = 0;
+      this.planting_flag = 0;
+      this.harvest_flag = 0;
+    }
+    if (this.navParams.get("action")) {
+      console.log('action ', this.navParams.get("action"))
+      switch (this.navParams.get("action")) {
+        case "0":
+          this.planting_flag = 1;
+          break;
+        case "1":
+          this.harvest_flag = 1;
+          break;
+        case "2":
+          this.modify_flag = 1;
+          break;
+        default:
+          break;
+      }
+    }
+    if (this.navParams.get("sector_name")) {
+      this.sector_name = this.navParams.get("sector_name");
+    }
     console.log(this.planting_date);
     console.log(platform);
     // Optionally request the permission early
@@ -123,20 +157,30 @@ export class PlantingPage {
   
   
     */
-   }
+  }
+  modify() {
+    console.log(this.enabled);
+    console.log(this.sector_id);
+    this.http.api('/sector/enabled', { sector_id: this.sector_id, enabled: this.enabled }).then((result) => {
+      console.log(result);
+      this.navCtrl.popToRoot();
+    });
+
+
+  }
 
   planting() {
-    var data =  {planting_date: this.planting_date, crop_name: this.crop_name, sector_id : this.sector_id }
-    this.http.api('/planting/',data).then((result) => {
+    var data = { planting_date: this.planting_date, crop_name: this.crop_name, sector_id: this.sector_id }
+    this.http.api('/planting/', data).then((result) => {
       console.log(result);
-
+      this.navCtrl.popToRoot();
     });
   }
   harvest() {
-    var data =  {harvest_date: this.planting_date,  sector_id : this.sector_id }
-    this.http.api('/harvest/',data).then((result) => {
+    var data = { harvest_date: this.planting_date, sector_id: this.sector_id }
+    this.http.api('/harvest/', data).then((result) => {
       console.log(result);
-
+      this.navCtrl.popToRoot();
     });
   }
   ionViewDidLoad() {

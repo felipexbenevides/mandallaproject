@@ -16,43 +16,65 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-item>
-        <ion-label>Date</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="planting_date"></ion-datetime>
-      </ion-item>
-      <br>
-      <br>
-  <ion-list>
+  <h3 *ngIf="sector_name">
+    Setor: {{sector_name}}
+  </h3>
+
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="planting_date"></ion-datetime>
+  </ion-item>
+  <br>
+  <br>
+
+  <ion-list *ngIf="!sector_name">
     <ion-item>
       <ion-label>Setor</ion-label>
       <ion-select [(ngModel)]="sector_id">
         <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>
       </ion-select>
+
     </ion-item>
   </ion-list>
-  <ion-list>
+
+  <ion-list *ngIf="planting_flag == 1">
     <ion-item>
       <ion-label>Cultura</ion-label>
       <ion-select [(ngModel)]="crop_name">
         <ion-option *ngFor="let item2 of itens2" value="{{item2.name}}">{{item2.name}}</ion-option>
       </ion-select>
     </ion-item>
+    <br>
+    <br>
+    <button ion-button block (click)="planting()">Plantar</button>
+    <br>
+    <br>
   </ion-list>
   <br>
-  <br>
-  <button ion-button block (click)="planting()">Plantar</button>
-  <br>
-  <br>
-  <br>
-  <ion-list>
-      <ion-item>
-        <ion-label>Setor</ion-label>
-        <ion-select>
-          <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
+  <ion-list *ngIf="!sector_name">
+    <ion-item>
+      <ion-label>Setor</ion-label>
+      <ion-select>
+        <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="harvest_flag == 1">
+
     <br>
     <br>
-    <button ion-button block (click)="harvest()">Colher</button>    
+    <button ion-button block (click)="harvest()">Colher</button>
+  </ion-list>
+
+  <div *ngIf="modify_flag == 1">
+    <br>
+    <br>
+    <ion-item>
+      <ion-label> Habilitado</ion-label>
+      <ion-toggle checked="false" [(ngModel)]="enabled"></ion-toggle>
+    </ion-item>
+    <br>
+    <button ion-button block (click)="modify()">Modificar</button>
+  </div>
 </ion-content>

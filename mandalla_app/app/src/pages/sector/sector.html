@@ -1,0 +1,35 @@
+<!--
+  Generated template for the SectorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>Setores</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Setor</ion-label>
+      <ion-select [(ngModel)]="sector_id">
+        <ion-option *ngFor="let item of itens" value="{{item._id}}">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label> Habilitado</ion-label>
+      <ion-toggle checked="false" [(ngModel)]="enabled"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <br>
+  <br>
+  <button ion-button block (click)="modify()">Modificar</button>
+
+
+
+</ion-content>
