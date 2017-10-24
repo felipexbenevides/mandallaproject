@@ -14,6 +14,29 @@
 
 
 <ion-content padding>
+    <ion-list radio-group [(ngModel)]="action">
+        <ion-list-header>
+          Setor {{sector_name}}
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Plantar</ion-label>
+          <ion-radio checked="true" value="0"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Colher</ion-label>
+          <ion-radio value="1"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Habilitar/Desabilitar</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
+    
+      </ion-list>
+      <button ion-button block (click)="next()">Avançar</button>
+      <br><br><br>
   <ion-card padding>
 
     <h2>
@@ -35,27 +58,6 @@
     </ion-card-content>
 
   </ion-card>
-  <ion-list radio-group [(ngModel)]="action">
-    <ion-list-header>
-      Setor {{sector_name}}
-    </ion-list-header>
 
-    <ion-item>
-      <ion-label>Plantar</ion-label>
-      <ion-radio checked="true" value="0"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Colher</ion-label>
-      <ion-radio value="1"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Habilitar/Desabilitar</ion-label>
-      <ion-radio value="2"></ion-radio>
-    </ion-item>
-
-  </ion-list>
-  <button ion-button block (click)="next()">Avançar</button>
 
 </ion-content>
