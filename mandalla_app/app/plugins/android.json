@@ -7,25 +7,10 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-android-permissions": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-qrscanner": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
         "cordova-plugin-statusbar": {
@@ -37,9 +22,16 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
-        "phonegap-plugin-barcodescanner": {
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-qrscanner": {
             "PACKAGE_NAME": "io.ionic.starter"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        }
+    }
 }

@@ -50,15 +50,7 @@
     "cordova-plugin-qrscanner": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-qrscanner@^2.5.0"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-camera": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-camera@^2.4.1"
+            "id": "cordova-plugin-qrscanner"
         },
         "is_top_level": true,
         "variables": {}
@@ -66,25 +58,9 @@
     "cordova-plugin-compat": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-compat@1.2.0"
+            "id": "cordova-plugin-compat@^1.0.0"
         },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-android-permissions": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-android-permissions"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "phonegap-plugin-barcodescanner": {
-        "source": {
-            "type": "registry",
-            "id": "phonegap-plugin-barcodescanner"
-        },
-        "is_top_level": true,
+        "is_top_level": false,
         "variables": {}
     }
 }

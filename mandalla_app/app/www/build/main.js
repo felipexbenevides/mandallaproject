@@ -1409,18 +1409,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_splash_screen__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_http_service_http_service__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_qr_scanner__ = __webpack_require__(279);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_camera__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_android_permissions__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_barcode_scanner__ = __webpack_require__(204);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
 
 
 
@@ -1496,10 +1490,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_20__ionic_native_splash_screen__["a" /* SplashScreen */],
             { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
             __WEBPACK_IMPORTED_MODULE_21__providers_http_service_http_service__["a" /* HttpServiceProvider */],
-            __WEBPACK_IMPORTED_MODULE_22__ionic_native_qr_scanner__["a" /* QRScanner */],
-            __WEBPACK_IMPORTED_MODULE_23__ionic_native_camera__["a" /* Camera */],
-            __WEBPACK_IMPORTED_MODULE_24__ionic_native_android_permissions__["a" /* AndroidPermissions */],
-            __WEBPACK_IMPORTED_MODULE_25__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]
+            __WEBPACK_IMPORTED_MODULE_22__ionic_native_qr_scanner__["a" /* QRScanner */]
         ]
     })
 ], AppModule);

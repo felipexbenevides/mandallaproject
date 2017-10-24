@@ -29,9 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpServiceProvider } from '../providers/http-service/http-service';
 
 import { QRScanner } from '@ionic-native/qr-scanner';
-import { Camera } from '@ionic-native/camera';
-import { AndroidPermissions } from '@ionic-native/android-permissions';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
 
 @NgModule({
   declarations: [
@@ -79,10 +77,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpServiceProvider,
-    QRScanner,
-    Camera,
-    AndroidPermissions,
-    BarcodeScanner
+    QRScanner
   ]
 })
 export class AppModule {}

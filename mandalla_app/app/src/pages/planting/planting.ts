@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { HttpServiceProvider } from "../../providers/http-service/http-service";
-import { AndroidPermissions } from '@ionic-native/android-permissions';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 /**
  * Generated class for the PlantingPage page.
@@ -21,7 +20,7 @@ export class PlantingPage {
   sector_id: any;
   sector_name: any;
   enabled: any;
-
+  
   planting_flag: any = 1;
   harvest_flag: any = 1;
   modify_flag: any = 0;
@@ -87,7 +86,7 @@ export class PlantingPage {
 
 
 
-  constructor(public androidPermissions: AndroidPermissions, public http: HttpServiceProvider, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner) {
+  constructor(public http: HttpServiceProvider, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, private qrScanner: QRScanner) {
     console.log(this.navParams);
 
     if (this.navParams.get("sector_id")) {
@@ -118,20 +117,46 @@ export class PlantingPage {
     console.log(this.planting_date);
     console.log(platform);
     // Optionally request the permission early
+    /*
+    let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+      console.log('Scanned something', text);
 
-    // let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-    //   console.log('Scanned something', text);
-
-    //   this.qrScanner.hide(); // hide camera preview
-    //   scanSub.unsubscribe(); // stop scanning
-    // });
-    console.log('1');
-
-    this.barcodeScanner.scan().then((barcodeData) => {
-      // Success! Barcode data is here
-    }, (err) => {
-      // An error occurred
+      this.qrScanner.hide(); // hide camera preview
+      scanSub.unsubscribe(); // stop scanning
     });
+    this.qrScanner.prepare()
+      .then((status: QRScannerStatus) => {
+        if (status.authorized) {
+          // camera permission was granted
+
+
+          // start scanning
+          let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+            console.log('Scanned something', text);
+
+            this.qrScanner.hide(); // hide camera preview
+            scanSub.unsubscribe(); // stop scanning
+          });
+
+          // show camera preview
+          this.qrScanner.show();
+
+          // wait for user to scan something, then the observable callback will be called
+
+        } else if (status.denied) {
+          console.log('Scanned something');
+          // camera permission was permanently denied
+          // you must use QRScanner.openSettings() method to guide the user to the settings page
+          // then they can grant the permission from there
+        } else {
+          console.log('Scanned something');
+          // permission was denied, but not permanently. You can ask for permission again at a later time.
+        }
+      })
+      .catch((e: any) => console.log('Error is', e));
+  
+  
+    */
   }
   modify() {
     console.log(this.enabled);
