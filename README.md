@@ -1,4 +1,5 @@
-# MandallaProject
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/logo.jpg)
+
 Mandalla é um tipo de produção de alimentos que utiliza os princípios universais da permacultura. Ou seja, baseia-se em um projeto consciente de um ecossistema agrícola com produção diversificada, estável e resiliente. Tal ecossistema fornece alimento, energia, abrigo e outras necessidades materiais e não materiais de forma sustentável, promovendo a autossuficiência da família rural envolvida.
 
 É neste contexto que presente trabalho se propõe a projetar uma arquitetura baseada em internet das coisas (IoT) para o modelo de produção Mandalla, levando em consideração a produção de hortaliças, proteínas e a gestão de todo o sistema.
@@ -146,12 +147,20 @@ URL:'/planting/crop/:crop'
 ``` URL: '/circles/life' ```
 * RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
 * RETORNA: ÁREAS EM USO (PLANTADAS) DENTRO DOS CÍRCULOS CORRESPONDENTES À QUALIDADE DE VIDA.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/3.jpg)
+
+
 ``` URL: '/circles/economic' ```
 * RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
 * RETORNA: ÁREAS EM USO (PLANTADAS) DENTRO DOS CÍRCULOS CORRESPONDENTES À PRODUTIVIDADE ECONÔMICA.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/2.jpg)
+
+
 ``` URL: '/circles/environment' ```
 * RECEBE: nada
 * RETORNA: ÁREAS EM USO (PLANTADAS) DENTRO DOS CÍRCULOS CORRESPONDENTES À EQUILÍBRIO AMBIENTAL.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/1.jpg)
+
 
 ## PLANTIO
 ``` URL:/planting/' ```
