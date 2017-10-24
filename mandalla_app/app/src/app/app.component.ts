@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ConfigPage } from '../pages/config/config';
+import { PlantingPage } from '../pages/planting/planting';
 import { CirclesPage } from '../pages/circles/circles';
 
 
@@ -33,6 +34,12 @@ export class MyApp {
         component: HomePage,
         desc: 'página inicial',
         icon: 'home'
+      },
+      {
+        title: 'Plantação',
+        component: PlantingPage,
+        desc: 'plantar e colher',
+        icon: 'nutrition'
       },
       {
         title: 'Circulos',

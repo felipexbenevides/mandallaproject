@@ -237,13 +237,6 @@ export class CircleRenderPage {
         ]
       },
       options: {
-        tooltips: {
-          custom: (tooltipModel) => {
-            console.log(tooltipModel);
-            console.log(tooltipModel.body[0].lines[0].split(":"));
-            this.modal(tooltipModel.body[0].lines[0].split(":"));
-          }
-        },
         responsive: true,
         legend: {
           display: false,
@@ -278,7 +271,7 @@ export class CircleRenderPage {
         datasets: [
           {
             data: [
-              9, 9, 9, 9
+              1, 1, 1, 1
             ],
             backgroundColor: [
               this.colors[planted[32].status].value,
@@ -292,13 +285,6 @@ export class CircleRenderPage {
         ]
       },
       options: {
-        tooltips: {
-          custom: (tooltipModel) => {
-            console.log(tooltipModel);
-            console.log(tooltipModel.body[0].lines[0].split(":"));
-            this.modal(tooltipModel.body[0].lines[0].split(":"));
-          }
-        },
         responsive: true,
         legend: {
           display: false,

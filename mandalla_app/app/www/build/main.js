@@ -346,7 +346,6 @@ HomePage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__list_list__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sensors_sensors__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__planting_planting__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -356,7 +355,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -372,12 +370,6 @@ var ConfigPage = (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.items = [
-            {
-                title: 'Plantação',
-                component: __WEBPACK_IMPORTED_MODULE_4__planting_planting__["a" /* PlantingPage */],
-                desc: 'plantar e colher',
-                icon: 'nutrition'
-            },
             {
                 title: 'Sensores',
                 component: __WEBPACK_IMPORTED_MODULE_3__sensors_sensors__["a" /* SensorsPage */],
@@ -403,9 +395,6 @@ var ConfigPage = (function () {
                 break;
             case 'Sensores':
                 this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__sensors_sensors__["a" /* SensorsPage */], {});
-                break;
-            case 'Plantação':
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__planting_planting__["a" /* PlantingPage */], {});
                 break;
             default:
                 break;
@@ -1041,7 +1030,6 @@ var CircleRenderPage = (function () {
         });
     };
     CircleRenderPage.prototype.circle2 = function (planted) {
-        var _this = this;
         this.myChart1.nativeElement.style.display = 'none';
         var ctx2 = this.myChart2.nativeElement.getContext('2d');
         var myChart2 = new Chart(ctx2, {
@@ -1118,13 +1106,6 @@ var CircleRenderPage = (function () {
                 ]
             },
             options: {
-                tooltips: {
-                    custom: function (tooltipModel) {
-                        console.log(tooltipModel);
-                        console.log(tooltipModel.body[0].lines[0].split(":"));
-                        _this.modal(tooltipModel.body[0].lines[0].split(":"));
-                    }
-                },
                 responsive: true,
                 legend: {
                     display: false,
@@ -1141,7 +1122,6 @@ var CircleRenderPage = (function () {
         });
     };
     CircleRenderPage.prototype.circle3 = function (planted) {
-        var _this = this;
         this.myChart1.nativeElement.style.display = 'none';
         this.myChart2.nativeElement.style.display = 'none';
         var ctx3 = this.myChart3.nativeElement.getContext('2d');
@@ -1158,7 +1138,7 @@ var CircleRenderPage = (function () {
                 datasets: [
                     {
                         data: [
-                            9, 9, 9, 9
+                            1, 1, 1, 1
                         ],
                         backgroundColor: [
                             this.colors[planted[32].status].value,
@@ -1171,13 +1151,6 @@ var CircleRenderPage = (function () {
                 ]
             },
             options: {
-                tooltips: {
-                    custom: function (tooltipModel) {
-                        console.log(tooltipModel);
-                        console.log(tooltipModel.body[0].lines[0].split(":"));
-                        _this.modal(tooltipModel.body[0].lines[0].split(":"));
-                    }
-                },
                 responsive: true,
                 legend: {
                     display: false,
@@ -1613,8 +1586,9 @@ HttpServiceProvider = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_config_config__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_circles_circles__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_planting_planting__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_circles_circles__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1624,6 +1598,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1649,8 +1624,14 @@ var MyApp = (function () {
                 icon: 'home'
             },
             {
+                title: 'Plantação',
+                component: __WEBPACK_IMPORTED_MODULE_6__pages_planting_planting__["a" /* PlantingPage */],
+                desc: 'plantar e colher',
+                icon: 'nutrition'
+            },
+            {
                 title: 'Circulos',
-                component: __WEBPACK_IMPORTED_MODULE_6__pages_circles_circles__["a" /* CirclesPage */],
+                component: __WEBPACK_IMPORTED_MODULE_7__pages_circles_circles__["a" /* CirclesPage */],
                 desc: 'setores do plantio',
                 icon: 'ionic'
             },
@@ -1684,9 +1665,9 @@ __decorate([
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\app\app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar color="dark">\n      <ion-title>Mandala Project</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)"> -->\n       <!-- <ion-icon name="{{ p.icon }}"></ion-icon> {{p.title}} -->\n      <!-- </button> -->\n      <ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">\n        <ion-avatar item-start>\n          <ion-icon name="{{ p.icon }}" style="font-size:48px;"></ion-icon>\n        </ion-avatar>\n        <h2>{{p.title}}</h2>\n        <p>{{ p.desc }}</p>\n      </ion-item>      \n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\app\app.html"*/,
-        providers: [__WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__["a" /* HttpServiceProvider */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__["a" /* HttpServiceProvider */]]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map

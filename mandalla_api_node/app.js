@@ -384,13 +384,13 @@ app.get('/db/init/', (req, res) => {
 
 
 function status(status) {
-  console.group("Server Info:");
+  console.log("Server Info:");
   console.log('Port: ' + serverParam.port);
   console.log('Mode: ' + serverParam.mode);
-  console.group("Status:");
+  console.log("Status:");
   console.log(serverParam.sign + ': ' + status);
-  console.groupEnd();
-  console.groupEnd();
+  console.log('');
+  console.log('');
 }
 
 
