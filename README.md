@@ -146,12 +146,20 @@ URL:'/planting/crop/:crop'
 ``` URL: '/circles/life' ```
 * RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
 * RETORNA: ÁREAS EM USO (PLANTADAS) DENTRO DOS CÍRCULOS CORRESPONDENTES À QUALIDADE DE VIDA.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/3.jpg)
+
+
 ``` URL: '/circles/economic' ```
 * RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
 * RETORNA: ÁREAS EM USO (PLANTADAS) DENTRO DOS CÍRCULOS CORRESPONDENTES À PRODUTIVIDADE ECONÔMICA.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/2.jpg)
+
+
 ``` URL: '/circles/environment' ```
 * RECEBE: nada
 * RETORNA: ÁREAS EM USO (PLANTADAS) DENTRO DOS CÍRCULOS CORRESPONDENTES À EQUILÍBRIO AMBIENTAL.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/1.jpg)
+
 
 ## PLANTIO
 ``` URL:/planting/' ```
