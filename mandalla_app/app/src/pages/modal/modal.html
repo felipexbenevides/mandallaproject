@@ -24,9 +24,12 @@
     <ion-badge *ngIf="this.data.enabled == true" color="secondary">habilitado</ion-badge>
     <ion-card-content>
       <div *ngFor="let item of this.data.sets">
-        <small>{{(item.crop).toUpperCase()}}({{item.planting_date}})</small>
-        <p *ngIf="item.harvest_date">{{item.harvest_date}}</p>
-        <ion-badge *ngIf="this.data.enabled == true" color="light">colhido</ion-badge>
+        <small><b>{{(item.crop).toUpperCase()}}({{item.planting_date}})</b></small>
+        <br>
+        <small *ngIf="item.harvest_date">{{item.harvest_date}}</small>
+        <br>
+        <ion-badge *ngIf="item.harvest_date" color="light">colhido</ion-badge>
+        <br>
         <br>
       </div>
     </ion-card-content>
