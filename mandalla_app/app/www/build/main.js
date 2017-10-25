@@ -20,18 +20,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the SensorsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 var SensorsPage = (function () {
     function SensorsPage(navCtrl, navParams, http) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.http = http;
+        this.reads = [{ sensor: "1", reads: [{ value: "0" }] }, { sensor: "2", reads: [{ value: "0" }] }, { sensor: "3", reads: [{ value: "0" }] }];
+        this.time = 500;
+        this.ctx1 = null;
+        console.log(this.reads);
         this.url = this.navParams.get('url');
         if (this.url) {
             this.sensor().then(function (result) {
@@ -40,13 +38,92 @@ var SensorsPage = (function () {
             });
         }
         else {
-            this.list().then(function (result) {
+            this.plotter();
+        }
+    }
+    SensorsPage.prototype.plotter = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.list().then(function (result) {
                 console.log(JSON.parse(result['_body']));
                 _this.sensors = JSON.parse(result['_body']);
                 _this.sensors = _this.sensors['sensors'];
+                console.log('sasdasd', _this.sensors[0].sensors[0].value);
+                (_this.reads[0].reads).push({ "value": _this.sensors[0].sensors[0].value });
+                (_this.reads[1].reads).push({ "value": _this.sensors[1].sensors[0].value });
+                (_this.reads[2].reads).push({ "value": _this.sensors[2].sensors[0].value });
+                _this.ctx1 = _this.myChart1.nativeElement.getContext('2d');
+                var myChart = new Chart(_this.ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: _this.reads[0].reads.map(function (item, index, c) { return index; }),
+                        datasets: [{
+                                label: _this.sensors[0].sensors[0].name,
+                                data: _this.reads[0].reads.map(function (item, index, c) { return item.value; }),
+                                borderWidth: 1,
+                                fill: false
+                            }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                        }
+                    }
+                });
+                var ctx2 = _this.myChart2.nativeElement.getContext('2d');
+                var myChart = new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: _this.reads[1].reads.map(function (item, index, c) { return index; }),
+                        datasets: [{
+                                label: _this.sensors[1].sensors[0].name,
+                                data: _this.reads[1].reads.map(function (item, index, c) { return item.value; }),
+                                borderWidth: 1,
+                                fill: false
+                            }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                        }
+                    }
+                });
+                var ctx3 = _this.myChart3.nativeElement.getContext('2d');
+                var myChart = new Chart(ctx3, {
+                    type: 'line',
+                    data: {
+                        labels: _this.reads[2].reads.map(function (item, index, c) { return index; }),
+                        datasets: [{
+                                label: _this.sensors[2].sensors[0].name,
+                                data: _this.reads[2].reads.map(function (item, index, c) { return item.value; }),
+                                borderWidth: 1,
+                                fill: false
+                            }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                        }
+                    }
+                });
             });
-        }
-    }
+            console.log((_this.reads[0].reads).length);
+            _this.time = ((_this.reads[0].reads).length) * 1000;
+            _this.plotter();
+        }, this.time);
+    };
     /**
      * list
      */
@@ -74,13 +151,26 @@ var SensorsPage = (function () {
     };
     return SensorsPage;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])('myChart1'),
+    __metadata("design:type", Object)
+], SensorsPage.prototype, "myChart1", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])('myChart2'),
+    __metadata("design:type", Object)
+], SensorsPage.prototype, "myChart2", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])('myChart3'),
+    __metadata("design:type", Object)
+], SensorsPage.prototype, "myChart3", void 0);
 SensorsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-sensors',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/'<!--\n  Generated template for the SensorsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Sensores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let item of sensors; let i = index" style="border-top: 4px solid green">\n    <ion-card-content>\n      <h1>\n        {{item[\'sensors\'][0][\'id\']}}. {{ ((item[\'sensors\'][0][\'name\']).replace("_", " ").toUpperCase()) }}\n      </h1>\n      <p>Tipo: {{item[\'sensors\'][0][\'type\']}}</p>\n      <p>Versão: {{item[\'version\']}}</p>\n      \n      <!-- <ion-card-title> -->\n      <!-- </ion-card-title> -->\n      <!-- <label>Identificador:</label> -->\n      <ion-badge color="secondary">{{ item[\'sensors\'][0][\'value\'] }}</ion-badge>\n      <!-- <code>\n        Valor: {{ item[\'sensors\'][0][\'value\'] }}\n      </code> -->\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/,
+        selector: 'page-sensors',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/'<!--\n  Generated template for the SensorsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Sensores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let item of sensors; let i = index" style="border-top: 4px solid green">\n    <ion-card-content>\n      <h1>\n        {{item[\'sensors\'][0][\'id\']}}. {{ ((item[\'sensors\'][0][\'name\']).replace("_", " ").toUpperCase()) }}\n      </h1>\n      <p>Tipo: {{item[\'sensors\'][0][\'type\']}}</p>\n      <p>Versão: {{item[\'version\']}}</p>\n      \n      <!-- <ion-card-title> -->\n      <!-- </ion-card-title> -->\n      <!-- <label>Identificador:</label> -->\n      <ion-badge color="secondary">{{ item[\'sensors\'][0][\'value\'] }}</ion-badge>\n      <!-- <code>\n        Valor: {{ item[\'sensors\'][0][\'value\'] }}\n      </code> -->\n    </ion-card-content>\n  </ion-card>\n  <canvas #myChart1 id="myChart1" width="400" height="400"></canvas>\n  <canvas #myChart2 id="myChart2" width="400" height="400"></canvas>\n  <canvas #myChart3 id="myChart3" width="400" height="400"></canvas>\n\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]) === "function" && _c || Object])
 ], SensorsPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=sensors.js.map
 
 /***/ }),
