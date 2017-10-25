@@ -24,12 +24,6 @@ export class ConfigPage {
       icon: 'nutrition'
     },
     {
-      title: 'Sensores',
-      component: SensorsPage,
-      desc: 'lista de sensores',
-      icon: 'pulse'
-    },
-    {
       title: 'API',
       component: ListPage,
       desc: 'lista das APIs disponíveis',

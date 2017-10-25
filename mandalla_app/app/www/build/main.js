@@ -29,6 +29,10 @@ var SensorsPage = (function () {
         this.reads = [{ sensor: "1", reads: [{ value: "0" }] }, { sensor: "2", reads: [{ value: "0" }] }, { sensor: "3", reads: [{ value: "0" }] }];
         this.time = 500;
         this.ctx1 = null;
+        this.color = [{ value: "secondary" },
+            { value: "danger" },
+            { value: "primary" }];
+        window.myChart = { ctx1: '', ctx2: '', ctx3: '' };
         console.log(this.reads);
         this.url = this.navParams.get('url');
         if (this.url) {
@@ -53,15 +57,17 @@ var SensorsPage = (function () {
                 (_this.reads[1].reads).push({ "value": _this.sensors[1].sensors[0].value });
                 (_this.reads[2].reads).push({ "value": _this.sensors[2].sensors[0].value });
                 _this.ctx1 = _this.myChart1.nativeElement.getContext('2d');
-                var myChart = new Chart(_this.ctx1, {
+                window.myChart.ctx1 = new Chart(_this.ctx1, {
                     type: 'line',
                     data: {
                         labels: _this.reads[0].reads.map(function (item, index, c) { return index; }),
                         datasets: [{
-                                label: _this.sensors[0].sensors[0].name,
-                                data: _this.reads[0].reads.map(function (item, index, c) { return item.value; }),
+                                label: _this.sensors[0].sensors[0].name.replace("_", " ").toUpperCase(),
+                                data: _this.reads[0].reads.map(function (item, index, c) { return (item.value * 200 / 350); }),
                                 borderWidth: 1,
-                                fill: false
+                                fill: false,
+                                backgroundColor: "#008000",
+                                borderColor: "#008000",
                             }]
                     },
                     options: {
@@ -75,15 +81,17 @@ var SensorsPage = (function () {
                     }
                 });
                 var ctx2 = _this.myChart2.nativeElement.getContext('2d');
-                var myChart = new Chart(ctx2, {
+                window.myChart.ctx2 = new Chart(ctx2, {
                     type: 'line',
                     data: {
                         labels: _this.reads[1].reads.map(function (item, index, c) { return index; }),
                         datasets: [{
-                                label: _this.sensors[1].sensors[0].name,
-                                data: _this.reads[1].reads.map(function (item, index, c) { return item.value; }),
+                                label: _this.sensors[1].sensors[0].name.replace("_", " ").toUpperCase(),
+                                data: _this.reads[1].reads.map(function (item, index, c) { return (item.value * 14 / 350); }),
                                 borderWidth: 1,
-                                fill: false
+                                fill: false,
+                                backgroundColor: "red",
+                                borderColor: "red",
                             }]
                     },
                     options: {
@@ -97,15 +105,17 @@ var SensorsPage = (function () {
                     }
                 });
                 var ctx3 = _this.myChart3.nativeElement.getContext('2d');
-                var myChart = new Chart(ctx3, {
+                window.myChart.ctx3 = new Chart(ctx3, {
                     type: 'line',
                     data: {
                         labels: _this.reads[2].reads.map(function (item, index, c) { return index; }),
                         datasets: [{
-                                label: _this.sensors[2].sensors[0].name,
-                                data: _this.reads[2].reads.map(function (item, index, c) { return item.value; }),
+                                label: _this.sensors[2].sensors[0].name.replace("_", " ").toUpperCase(),
+                                data: _this.reads[2].reads.map(function (item, index, c) { return (item.value * 99 / 350); }),
                                 borderWidth: 1,
-                                fill: false
+                                fill: false,
+                                backgroundColor: "#0000FF",
+                                borderColor: "#0000FF",
                             }]
                     },
                     options: {
@@ -165,7 +175,7 @@ __decorate([
 ], SensorsPage.prototype, "myChart3", void 0);
 SensorsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-sensors',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/'<!--\n  Generated template for the SensorsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Sensores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let item of sensors; let i = index" style="border-top: 4px solid green">\n    <ion-card-content>\n      <h1>\n        {{item[\'sensors\'][0][\'id\']}}. {{ ((item[\'sensors\'][0][\'name\']).replace("_", " ").toUpperCase()) }}\n      </h1>\n      <p>Tipo: {{item[\'sensors\'][0][\'type\']}}</p>\n      <p>Versão: {{item[\'version\']}}</p>\n      \n      <!-- <ion-card-title> -->\n      <!-- </ion-card-title> -->\n      <!-- <label>Identificador:</label> -->\n      <ion-badge color="secondary">{{ item[\'sensors\'][0][\'value\'] }}</ion-badge>\n      <!-- <code>\n        Valor: {{ item[\'sensors\'][0][\'value\'] }}\n      </code> -->\n    </ion-card-content>\n  </ion-card>\n  <canvas #myChart1 id="myChart1" width="400" height="400"></canvas>\n  <canvas #myChart2 id="myChart2" width="400" height="400"></canvas>\n  <canvas #myChart3 id="myChart3" width="400" height="400"></canvas>\n\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/,
+        selector: 'page-sensors',template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/'<!--\n  Generated template for the SensorsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Sensores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-card *ngFor="let item of sensors; let i = index" style="border-top: 4px solid green">\n    <ion-card-content>\n      <h1>\n        {{item[\'sensors\'][0][\'id\']}}. {{ ((item[\'sensors\'][0][\'name\']).replace("_", " ").toUpperCase()) }}\n      </h1>\n      <p>Tipo: {{item[\'sensors\'][0][\'type\']}}</p>\n      <p>Versão: {{item[\'version\']}}</p>\n      \n      <!-- <ion-card-title> -->\n      <!-- </ion-card-title> -->\n      <!-- <label>Identificador:</label> -->\n      <ion-badge color="{{color[i].value}}">{{ item[\'sensors\'][0][\'value\'] }}</ion-badge>\n      <!-- <code>\n        Valor: {{ item[\'sensors\'][0][\'value\'] }}\n      </code> -->\n    </ion-card-content>\n    \n  </ion-card>\n  <canvas #myChart1 id="myChart1" width="400" height="400"></canvas>\n  <canvas #myChart2 id="myChart2" width="400" height="400"></canvas>\n  <canvas #myChart3 id="myChart3" width="400" height="400"></canvas>\n\n\n</ion-content>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\pages\sensors\sensors.html"*/,
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_http_service_http_service__["a" /* HttpServiceProvider */]) === "function" && _c || Object])
 ], SensorsPage);
@@ -493,12 +503,6 @@ var ConfigPage = (function () {
                 component: __WEBPACK_IMPORTED_MODULE_4__planting_planting__["a" /* PlantingPage */],
                 desc: 'plantar e colher',
                 icon: 'nutrition'
-            },
-            {
-                title: 'Sensores',
-                component: __WEBPACK_IMPORTED_MODULE_3__sensors_sensors__["a" /* SensorsPage */],
-                desc: 'lista de sensores',
-                icon: 'pulse'
             },
             {
                 title: 'API',
@@ -1721,7 +1725,8 @@ HttpServiceProvider = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_config_config__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_circles_circles__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_sensors_sensors__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1731,6 +1736,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1762,6 +1768,12 @@ var MyApp = (function () {
                 icon: 'ionic'
             },
             {
+                title: 'Sensores',
+                component: __WEBPACK_IMPORTED_MODULE_7__pages_sensors_sensors__["a" /* SensorsPage */],
+                desc: 'lista de sensores',
+                icon: 'pulse'
+            },
+            {
                 title: 'Configurações',
                 component: __WEBPACK_IMPORTED_MODULE_5__pages_config_config__["a" /* ConfigPage */],
                 desc: 'configurações básicas',
@@ -1791,9 +1803,9 @@ __decorate([
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\mandallaproject\mandalla_app\app\src\app\app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar color="dark">\n      <ion-title>Mandala Project</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)"> -->\n       <!-- <ion-icon name="{{ p.icon }}"></ion-icon> {{p.title}} -->\n      <!-- </button> -->\n      <ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">\n        <ion-avatar item-start>\n          <ion-icon name="{{ p.icon }}" style="font-size:48px;"></ion-icon>\n        </ion-avatar>\n        <h2>{{p.title}}</h2>\n        <p>{{ p.desc }}</p>\n      </ion-item>      \n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"D:\mandallaproject\mandalla_app\app\src\app\app.html"*/,
-        providers: [__WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__["a" /* HttpServiceProvider */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__["a" /* HttpServiceProvider */]]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_8__providers_http_service_http_service__["a" /* HttpServiceProvider */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map

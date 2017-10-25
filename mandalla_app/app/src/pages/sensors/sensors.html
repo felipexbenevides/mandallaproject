@@ -29,11 +29,12 @@
       <!-- <ion-card-title> -->
       <!-- </ion-card-title> -->
       <!-- <label>Identificador:</label> -->
-      <ion-badge color="secondary">{{ item['sensors'][0]['value'] }}</ion-badge>
+      <ion-badge color="{{color[i].value}}">{{ item['sensors'][0]['value'] }}</ion-badge>
       <!-- <code>
         Valor: {{ item['sensors'][0]['value'] }}
       </code> -->
     </ion-card-content>
+    
   </ion-card>
   <canvas #myChart1 id="myChart1" width="400" height="400"></canvas>
   <canvas #myChart2 id="myChart2" width="400" height="400"></canvas>

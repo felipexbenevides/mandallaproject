@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ConfigPage } from '../pages/config/config';
 import { CirclesPage } from '../pages/circles/circles';
+  import { SensorsPage } from '../pages/sensors/sensors';
+
 
 
 
@@ -39,6 +41,12 @@ export class MyApp {
         component: CirclesPage,
         desc: 'setores do plantio',
         icon: 'ionic'
+      },
+      {
+        title: 'Sensores',
+        component: SensorsPage,
+        desc: 'lista de sensores',
+        icon: 'pulse'
       },
       {
         title: 'Configurações',

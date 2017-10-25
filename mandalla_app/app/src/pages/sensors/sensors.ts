@@ -17,13 +17,18 @@ export class SensorsPage {
   @ViewChild('myChart1') myChart1: any;
   @ViewChild('myChart2') myChart2: any;
   @ViewChild('myChart3') myChart3: any;
-  reads:any = [{sensor:"1", reads:[{value:"0"}]},{sensor:"2",reads:[{value:"0"}]},{sensor:"3",reads:[{value:"0"}]}]
-  time:any = 500;
+  reads: any = [{ sensor: "1", reads: [{ value: "0" }] }, { sensor: "2", reads: [{ value: "0" }] }, { sensor: "3", reads: [{ value: "0" }] }]
+  time: any = 500;
   sensors: any;
   analytics: any;
   url: any;
-  ctx1:any = null;
+  ctx1: any = null;
+  color:any = [{value: "secondary"},
+  {value: "danger"},
+  {value: "primary"}];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpServiceProvider) {
+    (<any>window).myChart = {ctx1:'', ctx2:'', ctx3:''};    
     console.log(this.reads);
     this.url = this.navParams.get('url');
     if (this.url) {
@@ -36,28 +41,30 @@ export class SensorsPage {
     }
   }
 
-  public plotter(){
-    setTimeout(()=>{
+  public plotter() {
+    setTimeout(() => {
       this.list().then((result) => {
         console.log(JSON.parse(result['_body']));
         this.sensors = JSON.parse(result['_body'])
         this.sensors = this.sensors['sensors']
-        console.log('sasdasd',this.sensors[0].sensors[0].value);
-        (this.reads[0].reads).push({"value":this.sensors[0].sensors[0].value});
-        (this.reads[1].reads).push({"value":this.sensors[1].sensors[0].value});
-        (this.reads[2].reads).push({"value":this.sensors[2].sensors[0].value});
-        
-        
+        console.log('sasdasd', this.sensors[0].sensors[0].value);
+        (this.reads[0].reads).push({ "value": this.sensors[0].sensors[0].value });
+        (this.reads[1].reads).push({ "value": this.sensors[1].sensors[0].value });
+        (this.reads[2].reads).push({ "value": this.sensors[2].sensors[0].value });
+
+
         this.ctx1 = this.myChart1.nativeElement.getContext('2d');
-        var myChart = new Chart(this.ctx1, {
+        (<any>window).myChart.ctx1 = new Chart(this.ctx1, {
           type: 'line',
           data: {
-            labels: this.reads[0].reads.map((item, index,c)=>{return index}),
+            labels: this.reads[0].reads.map((item, index, c) => { return index }),
             datasets: [{
-              label: this.sensors[0].sensors[0].name,
-              data: this.reads[0].reads.map((item, index,c)=>{return item.value}),
+              label: this.sensors[0].sensors[0].name.replace("_", " ").toUpperCase(),
+              data: this.reads[0].reads.map((item, index, c) => { return (item.value * 200 / 350) }),
               borderWidth: 1,
-              fill:false
+              fill: false,
+              backgroundColor: "#008000",
+              borderColor: "#008000",
             }]
           },
           options: {
@@ -72,15 +79,17 @@ export class SensorsPage {
         });
 
         var ctx2 = this.myChart2.nativeElement.getContext('2d');
-        var myChart = new Chart(ctx2, {
+        (<any>window).myChart.ctx2 = new Chart(ctx2, {
           type: 'line',
           data: {
-            labels: this.reads[1].reads.map((item, index,c)=>{return index}),
+            labels: this.reads[1].reads.map((item, index, c) => { return index }),
             datasets: [{
-              label: this.sensors[1].sensors[0].name,
-              data: this.reads[1].reads.map((item, index,c)=>{return item.value}),
+              label: this.sensors[1].sensors[0].name.replace("_", " ").toUpperCase(),
+              data: this.reads[1].reads.map((item, index, c) => { return (item.value * 14 / 350) }),
               borderWidth: 1,
-              fill:false
+              fill: false,
+              backgroundColor: "red",
+              borderColor: "red",
             }]
           },
           options: {
@@ -96,15 +105,17 @@ export class SensorsPage {
 
 
         var ctx3 = this.myChart3.nativeElement.getContext('2d');
-        var myChart = new Chart(ctx3, {
+        (<any>window).myChart.ctx3 = new Chart(ctx3, {
           type: 'line',
           data: {
-            labels: this.reads[2].reads.map((item, index,c)=>{return index}),
+            labels: this.reads[2].reads.map((item, index, c) => { return index }),
             datasets: [{
-              label: this.sensors[2].sensors[0].name,
-              data: this.reads[2].reads.map((item, index,c)=>{return item.value}),
+              label: this.sensors[2].sensors[0].name.replace("_", " ").toUpperCase(),
+              data: this.reads[2].reads.map((item, index, c) => { return (item.value * 99 / 350) }),
               borderWidth: 1,
-              fill:false
+              fill: false,
+              backgroundColor: "#0000FF",
+              borderColor: "#0000FF",
             }]
           },
           options: {
