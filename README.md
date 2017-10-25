@@ -133,14 +133,20 @@ URL:'/planting/crop/:crop'
 ``` URL: '/sensor/water/level' ```
 * RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
 * RETORNA: LEITURA IMEDIATA DOS SENSOR DE NÍVEL.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/4.jpg)
+
 
 ``` URL: '/sensor/water/ph' ```
 * RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
 * RETORNA: LEITURA IMEDIATA DO SENSOR DE PH.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/5.jpg)
+
 
 ``` URL: '/sensor/soil/moisture' ```
 * RECEBE: NÃO HÁ PARÂMETROS DE ENTRADA
 * RETORNA: LEITURA IMEDIATA DO SENSOR DE UMIDADE DO SOLO.
+![alt text](https://raw.githubusercontent.com/felipexbenevides/mandallaproject/master/files/6.jpg)
+
 
 ## CIRCULOS DA VIDA (APIS BACKEND FOR FRONT END)
 
